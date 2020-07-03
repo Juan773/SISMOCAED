@@ -1,4 +1,4 @@
-package com.upeu.edu.pe.controller;
+package com.upeu.edu.pe.sismocaed.controller;
 
 public class PersonaController {
 

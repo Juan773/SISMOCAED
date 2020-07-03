@@ -1,4 +1,4 @@
-package com.upeu.edu.pe.serviceImpl;
+package com.upeu.edu.pe.sismocaed.serviceImpl;
 
 public class PersonaServiceImpl {
 

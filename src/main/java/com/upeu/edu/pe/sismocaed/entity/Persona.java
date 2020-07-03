@@ -1,5 +1,5 @@
 package com.upeu.edu.pe.sismocaed.entity;
-<<<<<<< HEAD
+
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -13,24 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
-@Entity
-@Table(name = "persona")
-public class Persona implements Serializable{
-
-
-
-	private static final long serialVersionUID = -738736378076989750L;
-=======
-
-import java.io.Serializable;
-import java.sql.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 @Table(name="persona")
@@ -39,7 +21,7 @@ public class Persona implements Serializable{
 	private static final long serialVersionUID = 8326493188953673321L;
 
 
->>>>>>> 4f740ac6d3814a6bd0de2406b82a8f28206e26e7
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idersona;
@@ -114,8 +96,6 @@ public class Persona implements Serializable{
 	}
 	 
 
-<<<<<<< HEAD
-	
 	
 
 
@@ -123,6 +103,4 @@ public class Persona implements Serializable{
 
 
 
-=======
->>>>>>> 4f740ac6d3814a6bd0de2406b82a8f28206e26e7
 }

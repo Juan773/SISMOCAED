@@ -12,14 +12,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
-
 @Entity
 @Table(name="persona")
 public class Persona implements Serializable{
 
 	private static final long serialVersionUID = 8326493188953673321L;
-
 
 
 	@Id
@@ -95,12 +92,5 @@ public class Persona implements Serializable{
 		this.fecha_n = fecha_n;
 	}
 	 
-
-	
-
-
-
-
-
 
 }

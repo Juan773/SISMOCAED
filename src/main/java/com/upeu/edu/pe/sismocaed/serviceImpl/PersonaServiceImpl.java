@@ -27,7 +27,7 @@ public class PersonaServiceImpl implements PersonaService {
 		// TODO Auto-generated method stub
 		return personaDao.findById(idpersona).orElse(null);
 	}
-
+		
 	@Override
 	public Persona save(Persona persona) {
 		// TODO Auto-generated method stub

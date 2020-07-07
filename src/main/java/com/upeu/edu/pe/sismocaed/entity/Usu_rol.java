@@ -58,6 +58,10 @@ public class Usu_rol implements Serializable{
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+	public Usu_rol() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 

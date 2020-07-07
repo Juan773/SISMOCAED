@@ -50,6 +50,10 @@ public class Trabajador implements Serializable {
 	public void setIdpersona(Persona idpersona) {
 		this.idpersona = idpersona;
 	}
+	public Trabajador() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 
 }

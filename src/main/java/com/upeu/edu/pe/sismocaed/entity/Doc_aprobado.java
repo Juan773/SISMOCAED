@@ -20,7 +20,7 @@ public class Doc_aprobado implements Serializable  {
 	private static final long serialVersionUID = -5258517687137333798L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idodc_aprobado;
+	private Long iddoc_aprobado;
     private String codigoap;
     private Date fecha;
     private String doc_curriculum_vitae;
@@ -34,11 +34,11 @@ public class Doc_aprobado implements Serializable  {
 	@ManyToOne
 	@JoinColumn(name="idpostulante")
 	Postulante idpostulante;
-	public Long getIdodc_aprobado() {
-		return idodc_aprobado;
+	public Long getIddoc_aprobado() {
+		return iddoc_aprobado;
 	}
-	public void setIdodc_aprobado(Long idodc_aprobado) {
-		this.idodc_aprobado = idodc_aprobado;
+	public void setIddoc_aprobado(Long iddoc_aprobado) {
+		this.iddoc_aprobado = iddoc_aprobado;
 	}
 	public String getCodigoap() {
 		return codigoap;
@@ -93,6 +93,10 @@ public class Doc_aprobado implements Serializable  {
 	}
 	public void setIdpostulante(Postulante idpostulante) {
 		this.idpostulante = idpostulante;
+	}
+	public Doc_aprobado() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
     
     

@@ -19,18 +19,18 @@ public class Informe_ma implements Serializable{
 	private static final long serialVersionUID = -4281167407309705840L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long iforme_ma;
+	private Long idinforme_ma;
 	private String titulo;
 	private String descripcion;
 	private Date fecha;
 	@ManyToOne
 	@JoinColumn(name="idpostulante")
 	Postulante idpostulante;
-	public Long getIforme_ma() {
-		return iforme_ma;
+	public Long getIdiforme_ma() {
+		return idinforme_ma;
 	}
-	public void setIforme_ma(Long iforme_ma) {
-		this.iforme_ma = iforme_ma;
+	public void setInforme_ma(Long idinforme_ma) {
+		this.idinforme_ma = idinforme_ma;
 	}
 	public String getTitulo() {
 		return titulo;
@@ -55,6 +55,10 @@ public class Informe_ma implements Serializable{
 	}
 	public void setIdpostulante(Postulante idpostulante) {
 		this.idpostulante = idpostulante;
+	}
+	public Informe_ma() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
  
 }

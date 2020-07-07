@@ -63,6 +63,10 @@ public class Usuario implements Serializable {
 	public void setIdpersona(Persona idpersona) {
 		this.idpersona = idpersona;
 	}
+	public Usuario() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
  
 }

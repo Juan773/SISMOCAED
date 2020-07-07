@@ -32,7 +32,7 @@ public class PersonaController {
       public Persona create (@RequestBody Persona persona) {
     	  return personaService.save(persona);
       }
-      @PutMapping("/persona/{idpersona}")
+      @PutMapping("/editar/{idpersona}")
       public Persona update(@RequestBody Persona persona, @PathVariable Long idpersona) {
     	  Persona editar_persona = personaService.findById(idpersona);
     	  
@@ -47,9 +47,10 @@ public class PersonaController {
     	  return personaService.save(editar_persona);
     	  
       }
-      @DeleteMapping("eliminar/{idpersona}")
+      @DeleteMapping("eliminarpersona/{idpersona}")
       public void delete(@PathVariable Long idpersona) {
     	  personaService.delete(idpersona);
-    	 System.out.print("Persona Borrada");
+    	  
+     System.out.print("Persona Borrada");
       }
 }

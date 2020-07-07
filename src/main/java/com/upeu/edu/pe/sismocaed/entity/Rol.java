@@ -60,7 +60,12 @@ public class Rol implements Serializable{
 	}
 
 	public void setOpcion(List<Opcion> opcion) {
-		this.opcion = opcion;
+		this.opcion = opcion; 
+	}
+
+	public Rol() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 

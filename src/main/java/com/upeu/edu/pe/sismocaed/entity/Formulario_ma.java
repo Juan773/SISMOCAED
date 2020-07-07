@@ -1,6 +1,6 @@
 package com.upeu.edu.pe.sismocaed.entity;
 import java.io.Serializable;
-import java.sql.Date;
+
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -29,7 +29,7 @@ public class Formulario_ma implements Serializable{
 	private int terminos;
 	@ManyToOne
 	@JoinColumn(name="iddoc_aprobado")
-	Doc_aprobado doc_aprobado;
+	Doc_aprobado iddoc_aprobado;
 	public Long getIdformulario_ma() {
 		return idformulario_ma;
 	}
@@ -78,11 +78,15 @@ public class Formulario_ma implements Serializable{
 	public void setTerminos(int terminos) {
 		this.terminos = terminos;
 	}
-	public Doc_aprobado getDoc_aprobado() {
-		return doc_aprobado;
+	public Doc_aprobado getiddoc_aprobado() {
+		return iddoc_aprobado;
 	}
-	public void setDoc_aprobado(Doc_aprobado doc_aprobado) {
-		this.doc_aprobado = doc_aprobado;
+	public void setiddoc_aprobado(Doc_aprobado iddoc_aprobado) {
+		this.iddoc_aprobado = iddoc_aprobado;
+	}
+	public Formulario_ma() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 

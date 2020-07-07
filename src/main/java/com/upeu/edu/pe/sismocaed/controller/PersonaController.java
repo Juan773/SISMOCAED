@@ -50,6 +50,7 @@ public class PersonaController {
       @DeleteMapping("eliminar/{idpersona}")
       public void delete(@PathVariable Long idpersona) {
     	  personaService.delete(idpersona);
-    	 System.out.print("Persona Borrada");
+    	  
+     System.out.print("Persona Borrada");
       }
 }

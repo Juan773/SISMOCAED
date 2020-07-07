@@ -111,6 +111,11 @@ public class Opcion implements Serializable{
 		this.usuario = usuario;
 	}
 
+	public Opcion() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 
 
 

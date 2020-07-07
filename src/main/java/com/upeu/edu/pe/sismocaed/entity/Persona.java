@@ -91,6 +91,10 @@ public class Persona implements Serializable{
 	public void setFecha_n(Date fecha_n) {
 		this.fecha_n = fecha_n;
 	}
+	public Persona() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	 
 
 }

@@ -56,4 +56,14 @@ public class UniversidadController {
     public void delete(@PathVariable Long iduniversidad) {
     	universidadService.delete(iduniversidad);
     }
+    
+    @GetMapping("/uni_procedure")
+    public List<Universidad> getUni_procedure(){
+    	return universidadService.getUniProcedure();
+    }
+    
+    @GetMapping("/unipro_byid/{iduniversidad}")
+    public List<Universidad> findUniById(@PathVariable Long iduniversidad) {
+    	return universidadService.unipro_byid(iduniversidad);
+    }
 }

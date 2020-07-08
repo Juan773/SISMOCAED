@@ -7,10 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQueries;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="universidad")
+@NamedStoredProcedureQueries({
+	@NamedStoredProcedureQuery(name="uni_procedure", procedureName="list_universidad"),
+	@NamedStoredProcedureQuery(name="uni_probyid", procedureName = "listuni_byid",
+	                           parameters= {@StoredProcedureParameter(mode = ParameterMode.IN,
+	                           name = "p_iduniversidad", type = Long.class)})
+})
 public class Universidad implements Serializable{
 
 	private static final long serialVersionUID = -4410426437930753861L;

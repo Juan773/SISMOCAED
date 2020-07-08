@@ -9,4 +9,6 @@ public interface UniversidadService {
 	public Universidad findById(Long iduniversidad);
 	public Universidad save(Universidad universidad);
 	public void delete (Long iduniversidad);
+	public List<Universidad> getUniProcedure();
+	public List<Universidad> unipro_byid(Long input);
 }

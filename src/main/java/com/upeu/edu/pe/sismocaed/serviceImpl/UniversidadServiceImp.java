@@ -2,6 +2,8 @@ package com.upeu.edu.pe.sismocaed.serviceImpl;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,8 @@ public class UniversidadServiceImp implements UniversidadService{
 
 	@Autowired
 	private UniversidadDao universidadDao;
+	@Autowired
+	private EntityManager em;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -40,6 +44,20 @@ public class UniversidadServiceImp implements UniversidadService{
 		// TODO Auto-generated method stub
 		universidadDao.deleteById(iduniversidad);
 		
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Universidad> getUniProcedure() {
+		// TODO Auto-generated method stub
+		return em.createNamedStoredProcedureQuery("uni_procedure").getResultList();
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Universidad> unipro_byid(Long input) {
+		// TODO Auto-generated method stub
+		return  em.createNamedStoredProcedureQuery("uni_probyid").setParameter("p_iduniversidad", input).getResultList();
 	}
 	
 }

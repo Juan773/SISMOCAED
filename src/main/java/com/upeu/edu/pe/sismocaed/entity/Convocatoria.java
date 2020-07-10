@@ -29,23 +29,25 @@ public class Convocatoria implements Serializable{
 	public Date fecha_fin;
 	@Column(length=45)
 	public String descripcion;
-	@Column(length=45)
-	public String publicacion;
+
 	@ManyToOne
+	@JoinColumn(name="idpublicidad")
+	Publicidad idpublicidad;
 	@JoinColumn(name="idtrabajador")
 	Trabajador idtrabajador;
 	public Convocatoria() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	public Convocatoria(Long idconvocatoria, String nombre_con, Date fecha_ini, Date fecha_fin, String descripcion,
-			String publicacion, Trabajador idtrabajador) {
+	 Publicidad idpublicidad, Trabajador idtrabajador) {
 		super();
 		this.idconvocatoria = idconvocatoria;
 		this.nombre_con = nombre_con;
 		this.fecha_ini = fecha_ini;
 		this.fecha_fin = fecha_fin;
 		this.descripcion = descripcion;
-		this.publicacion = publicacion;
+		this.idpublicidad = idpublicidad;
 		this.idtrabajador = idtrabajador;
 	}
 	public Long getIdconvocatoria() {
@@ -78,11 +80,12 @@ public class Convocatoria implements Serializable{
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public String getPublicacion() {
-		return publicacion;
+
+	public Publicidad getIdpublicidad() {
+		return idpublicidad;
 	}
-	public void setPublicacion(String publicacion) {
-		this.publicacion = publicacion;
+	public void setIdpublicidad(Publicidad idpublicidad) {
+		this.idpublicidad = idpublicidad;
 	}
 	public Trabajador getIdtrabajador() {
 		return idtrabajador;
@@ -90,6 +93,9 @@ public class Convocatoria implements Serializable{
 	public void setIdtrabajador(Trabajador idtrabajador) {
 		this.idtrabajador = idtrabajador;
 	}
+
+
+
 	
 	
 }

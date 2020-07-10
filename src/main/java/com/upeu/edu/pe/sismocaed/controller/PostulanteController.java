@@ -43,7 +43,7 @@ public class PostulanteController {
 	@PutMapping("/editpost/{idpostulante}")
 	public Postulante update(@RequestBody Postulante postulante, @PathVariable Long idpostulante) {
 	   Postulante editar_postulante = postulanteService.findById(idpostulante);
-	   
+	   editar_postulante.setCodigo(postulante.getCodigo());
 	   editar_postulante.setEscuela_p(postulante.getEscuela_p());
 	   editar_postulante.setProfesion(postulante.getProfesion());
 	   editar_postulante.setGrado(postulante.getGrado());

@@ -48,8 +48,8 @@ public class ConvocatoriaController {
 		editar_convocatoria.setFecha_ini(convocatoria.getFecha_ini());
 		editar_convocatoria.setFecha_fin(convocatoria.getFecha_fin());
 		editar_convocatoria.setDescripcion(convocatoria.getDescripcion());
-		editar_convocatoria.setPublicacion(convocatoria.getPublicacion());
 		editar_convocatoria.setIdtrabajador(convocatoria.getIdtrabajador());
+		editar_convocatoria.setIdpublicidad(convocatoria.getIdpublicidad());
 		
 		return convocatoriaService.save(editar_convocatoria);
 	}

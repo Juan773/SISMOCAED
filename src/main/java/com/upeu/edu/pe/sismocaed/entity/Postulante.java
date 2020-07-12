@@ -1,11 +1,9 @@
 package com.upeu.edu.pe.sismocaed.entity;
 
 import java.io.Serializable;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,6 +21,8 @@ public class Postulante implements Serializable{
       @GeneratedValue(strategy=GenerationType.IDENTITY)
       public Long idpostulante;
       @Column(length=45)
+      public Long codigo;
+      @Column(length=45)
       public String escuela_p;
       @Column(length=45)
       public String profesion;
@@ -33,24 +33,32 @@ public class Postulante implements Serializable{
       @ManyToOne
       @JoinColumn(name="idpersona")
       Persona idpersona;
-	public Postulante() {
-		super();
-	}
-	public Postulante(Long idpostulante, String escuela_p, String profesion, String grado, String estado,
+	public Postulante(Long idpostulante, Long codigo, String escuela_p, String profesion, String grado, String estado,
 			Persona idpersona) {
 		super();
 		this.idpostulante = idpostulante;
+		this.codigo = codigo;
 		this.escuela_p = escuela_p;
 		this.profesion = profesion;
 		this.grado = grado;
 		this.estado = estado;
 		this.idpersona = idpersona;
 	}
+	public Postulante() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Long getIdpostulante() {
 		return idpostulante;
 	}
 	public void setIdpostulante(Long idpostulante) {
 		this.idpostulante = idpostulante;
+	}
+	public Long getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
 	}
 	public String getEscuela_p() {
 		return escuela_p;
@@ -82,6 +90,7 @@ public class Postulante implements Serializable{
 	public void setIdpersona(Persona idpersona) {
 		this.idpersona = idpersona;
 	}
+
       
       
 }

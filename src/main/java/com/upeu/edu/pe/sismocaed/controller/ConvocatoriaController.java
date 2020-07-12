@@ -28,7 +28,7 @@ public class ConvocatoriaController {
 	public List<Convocatoria> findAll(){
 		return (List<Convocatoria>) convocatoriaService.findAll();
 	}
-	
+
 	@GetMapping("/convocatoria/{idconvocatoria}")
 	public Convocatoria read(@PathVariable Long idconvocatoria) {
 		return convocatoriaService.findById(idconvocatoria);
@@ -54,7 +54,7 @@ public class ConvocatoriaController {
 		return convocatoriaService.save(editar_convocatoria);
 	}
 	
-	@DeleteMapping("/deleteconvo/{idconvocatoria}")
+	@DeleteMapping("/deleteconvo/{idconvocatoria}")	
 	public void delete(@PathVariable Long idconvocatoria) {
 		convocatoriaService.delete(idconvocatoria);
 	}

@@ -1,5 +1,6 @@
 package com.upeu.edu.pe.sismocaed.serviceImpl;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,10 @@ import com.upeu.edu.pe.sismocaed.entity.Publicidad;
 import com.upeu.edu.pe.sismocaed.service.PublicidadService;
 @Service
 public class PublicidadServiceImpl implements PublicidadService{
+	
+	
+
+	
 	@Autowired
 	private PublicidadDao publicidadDao;
 

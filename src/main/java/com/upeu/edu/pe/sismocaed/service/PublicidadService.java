@@ -10,4 +10,6 @@ public interface PublicidadService {
 	public Publicidad save(Publicidad publicidad);
 	public void delete (Long idpublicidad);
 	
+
+	
 }

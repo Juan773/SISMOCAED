@@ -64,6 +64,7 @@ public class UniversidadController {
     
     @GetMapping("/unipro_byid/{iduniversidad}")
     public List<Universidad> findUniById(@PathVariable Long iduniversidad) {
+    	System.out.println(iduniversidad);
     	return universidadService.unipro_byid(iduniversidad);
     }
 }

@@ -10,4 +10,5 @@ public interface Requisitos_aService {
 	public Requisitos_a findById(Long idrequisitos_a);
 	public Requisitos_a save(Requisitos_a requisitos_a);
 	public void delete(Long idrequisitos_a);
+	public List<Requisitos_a> getReq_aProcedure();
 }

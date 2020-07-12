@@ -9,10 +9,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedStoredProcedureQueries;
+import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="requisitos_a")
+@NamedStoredProcedureQueries({
+	@NamedStoredProcedureQuery(name="list_procedure" , procedureName="list_req")
+})
 public class Requisitos_a implements Serializable{
 
 	private static final long serialVersionUID = -6355454216883554473L;

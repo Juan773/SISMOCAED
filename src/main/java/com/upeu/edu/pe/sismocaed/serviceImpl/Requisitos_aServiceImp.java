@@ -2,6 +2,8 @@ package com.upeu.edu.pe.sismocaed.serviceImpl;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +17,9 @@ public class Requisitos_aServiceImp implements Requisitos_aService{
 
 	@Autowired
 	private Requisitos_aDao requisitos_aDao;
-
+    @Autowired
+    private EntityManager em;
+    
 	@Override
 	@Transactional(readOnly = true)
 	public List<Requisitos_a> findAll() {
@@ -39,5 +43,12 @@ public class Requisitos_aServiceImp implements Requisitos_aService{
 	public void delete(Long idrequisitos_a) {
 		// TODO Auto-generated method stub
 	    requisitos_aDao.deleteById(idrequisitos_a);
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Requisitos_a> getReq_aProcedure() {
+		// TODO Auto-generated method stub
+		return em.createNamedStoredProcedureQuery("list_procedure").getResultList();
 	}
 }

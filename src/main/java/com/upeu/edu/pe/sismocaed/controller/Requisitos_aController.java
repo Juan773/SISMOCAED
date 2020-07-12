@@ -55,4 +55,10 @@ public class Requisitos_aController {
     public void delete(@PathVariable Long idrequisitos_a) {
     	requisitos_aService.delete(idrequisitos_a);
     }
+    
+    @GetMapping("/req_a_procedure")
+    public List<Requisitos_a> getReq_aProcedure(){
+    	return requisitos_aService.getReq_aProcedure();
+    }
+    
 }

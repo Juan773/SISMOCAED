@@ -34,7 +34,7 @@ public class UniversidadController {
     	return universidadService.findById(iduniversidad);
     }
     
-    @PostMapping("/universidad")
+    @PostMapping("/saveuni")
     @ResponseStatus(HttpStatus.CREATED)
     public Universidad create(@RequestBody Universidad universidad) {
     	return universidadService.save(universidad);

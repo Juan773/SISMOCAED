@@ -2,6 +2,7 @@ package com.upeu.edu.pe.sismocaed.serviceImpl;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,5 +45,14 @@ public class PublicidadServiceImpl implements PublicidadService{
 		// TODO Auto-generated method stub
 		publicidadDao.deleteById(idpublicidad);
 	}
+
+	@Override
+	public Optional<Publicidad> findById1(Long idpublicidad) {
+		// TODO Auto-generated method stub
+		return publicidadDao.findById(idpublicidad);
+	}
+
+	
+	
 
 }

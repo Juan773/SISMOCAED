@@ -21,11 +21,15 @@ public class Detalle_convo implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Long iddetalle_convo;
 	@Column(length=45)
-	public String formato_f012_f01;
+	public String url_solicitud;
 	@Column(length=45)
-	public String formato_f012_f02;
+	public String fecha;
 	@Column(length=45)
-	public String curriculum;
+	public String url_carta;
+	@Column(length=45)
+	public String url_curriculum;
+	@Column(length=45)
+	public String descripcion;
 	@ManyToOne
 	@JoinColumn(name="idconvocatoria")
 	Convocatoria idconvocatoria;
@@ -35,13 +39,15 @@ public class Detalle_convo implements Serializable{
 	public Detalle_convo() {
 		super();
 	}
-	public Detalle_convo(Long iddetalle_convo, String formato_f012_f01, String formato_f012_f02, String curriculum,
-			Convocatoria idconvocatoria, Postulante idpostulante) {
+	public Detalle_convo(Long iddetalle_convo, String url_solicitud, String fecha, String url_carta,
+			String url_curriculum, String descripcion, Convocatoria idconvocatoria, Postulante idpostulante) {
 		super();
 		this.iddetalle_convo = iddetalle_convo;
-		this.formato_f012_f01 = formato_f012_f01;
-		this.formato_f012_f02 = formato_f012_f02;
-		this.curriculum = curriculum;
+		this.url_solicitud = url_solicitud;
+		this.fecha = fecha;
+		this.url_carta = url_carta;
+		this.url_curriculum = url_curriculum;
+		this.descripcion = descripcion;
 		this.idconvocatoria = idconvocatoria;
 		this.idpostulante = idpostulante;
 	}
@@ -51,23 +57,35 @@ public class Detalle_convo implements Serializable{
 	public void setIddetalle_convo(Long iddetalle_convo) {
 		this.iddetalle_convo = iddetalle_convo;
 	}
-	public String getFormato_f012_f01() {
-		return formato_f012_f01;
+	public String getUrl_solicitud() {
+		return url_solicitud;
 	}
-	public void setFormato_f012_f01(String formato_f012_f01) {
-		this.formato_f012_f01 = formato_f012_f01;
+	public void setUrl_solicitud(String url_solicitud) {
+		this.url_solicitud = url_solicitud;
 	}
-	public String getFormato_f012_f02() {
-		return formato_f012_f02;
+	public String getFecha() {
+		return fecha;
 	}
-	public void setFormato_f012_f02(String formato_f012_f02) {
-		this.formato_f012_f02 = formato_f012_f02;
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
 	}
-	public String getCurriculum() {
-		return curriculum;
+	public String getUrl_carta() {
+		return url_carta;
 	}
-	public void setCurriculum(String curriculum) {
-		this.curriculum = curriculum;
+	public void setUrl_carta(String url_carta) {
+		this.url_carta = url_carta;
+	}
+	public String getUrl_curriculum() {
+		return url_curriculum;
+	}
+	public void setUrl_curriculum(String url_curriculum) {
+		this.url_curriculum = url_curriculum;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	public Convocatoria getIdconvocatoria() {
 		return idconvocatoria;

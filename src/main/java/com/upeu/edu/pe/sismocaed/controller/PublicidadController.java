@@ -59,10 +59,11 @@ public class PublicidadController {
 		editar_publicidad.setTitulo(publicidad.getTitulo());
 		editar_publicidad.setUrl_imagen(publicidad.getUrl_imagen());
 		editar_publicidad.setEstado(publicidad.getEstado());
-		return publicidadService.save(editar_publicidad);
+		editar_publicidad.setPic(publicidad.getPic());
 		
+		return publicidadService.save(editar_publicidad);
 	}
-	@DeleteMapping("eliminarpublicidad/{idpublicidad}")
+	@DeleteMapping("/eliminarpublicidad/{idpublicidad}")
 	public void delete(@PathVariable Long idpublicidad) {
 		publicidadService.delete(idpublicidad);
 	  
@@ -70,10 +71,10 @@ public class PublicidadController {
 	}
 	
 	@RequestMapping(value = "/file/upload", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String uploadMultipartFile(@RequestParam("url_imagen") MultipartFile file, @RequestParam String estado) {
-		
+	public String uploadMultipartFile(@RequestParam("url_imagen") MultipartFile file) {
+                
 		try {
-			Publicidad publicidad = new Publicidad(null, file.getOriginalFilename(), file.getContentType(), null, file.getBytes());
+			Publicidad publicidad = new Publicidad(null, file.getOriginalFilename(), file.getContentType(), "1", file.getBytes());
 			publicidadService.save(publicidad);
 			return "File uploaded successfully! -> filename = " + file.getOriginalFilename();
 		} catch (Exception e) {

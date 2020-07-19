@@ -1,6 +1,7 @@
 package com.upeu.edu.pe.sismocaed.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
@@ -51,4 +52,12 @@ public class Requisitos_aServiceImp implements Requisitos_aService{
 		// TODO Auto-generated method stub
 		return em.createNamedStoredProcedureQuery("list_procedure").getResultList();
 	}
+
+	@Override
+	public Optional<Requisitos_a> findById1(Long idrequistos_a) {
+		// TODO Auto-generated method stub
+		return requisitos_aDao.findById(idrequistos_a);
+	}
+	
+	
 }

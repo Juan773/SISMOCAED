@@ -19,16 +19,16 @@ public class Publicidad implements Serializable {
 	public Long idpublicidad;
 	public String titulo;
 	public String url_imagen;
+    private String imagenId;
 	public String estado;
 	public Publicidad() {
-		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Publicidad(Long idpublicidad, String titulo, String url_imagen, String estado) {
+	public Publicidad(String titulo, String url_imagen, String imagenId, String estado) {
 		super();
-		this.idpublicidad = idpublicidad;
 		this.titulo = titulo;
 		this.url_imagen = url_imagen;
+		this.imagenId = imagenId;
 		this.estado = estado;
 	}
 	public Long getIdpublicidad() {
@@ -49,11 +49,17 @@ public class Publicidad implements Serializable {
 	public void setUrl_imagen(String url_imagen) {
 		this.url_imagen = url_imagen;
 	}
+	public String getImagenId() {
+		return imagenId;
+	}
+	public void setImagenId(String imagenId) {
+		this.imagenId = imagenId;
+	}
 	public String getEstado() {
 		return estado;
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-
+	
 }

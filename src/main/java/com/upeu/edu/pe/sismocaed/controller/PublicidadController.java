@@ -1,10 +1,16 @@
 package com.upeu.edu.pe.sismocaed.controller;
 
+
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import javax.imageio.ImageIO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,57 +18,91 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-
+import com.upeu.edu.pe.sismocaed.entity.Mensaje;
 import com.upeu.edu.pe.sismocaed.entity.Publicidad;
+import com.upeu.edu.pe.sismocaed.serviceImpl.PublicidadServiceImpl;
+import com.upeu.edu.pe.sismocaed.serviceImpl.PublicidService;
 
-
-import com.upeu.edu.pe.sismocaed.service.PublicidadService;
-
-@RequestMapping("/apisis")
 @RestController
+@RequestMapping("/publicidad")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class PublicidadController {
+	
 	@Autowired
-	private PublicidadService publicidadService;
-	@GetMapping("/publicidad")
+	private PublicidService publicidService;
+	
+	@Autowired
+	private PublicidadServiceImpl publicidadServiceImpl;
+	
+	@GetMapping("/listar-publi")
 	public List<Publicidad>readAll(){
-		return (List<Publicidad>) publicidadService.findAll();
+		return (List<Publicidad>) publicidadServiceImpl.findAll();
 	}
 	@GetMapping("/")
 	public String index( ) {
 		return "uploadFileView";
 	}
 
-	
-	
 	@GetMapping("publicidad/{idpublicidad}")
 	public Publicidad read (@PathVariable Long idpublicidad) {
-		return publicidadService.findById(idpublicidad);
+		return publicidadServiceImpl.findById(idpublicidad);
 		
 	}
 	@PostMapping("/publicidad")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Publicidad create (@RequestBody Publicidad publicidad) {
-		return publicidadService.save(publicidad);
+		return publicidadServiceImpl.save(publicidad);
 		
 	}
 	@PutMapping("/editar/{idpublicidad}")
 	public Publicidad update(@RequestBody Publicidad publicidad, @PathVariable Long idpublicidad) {
-		Publicidad editar_publicidad = publicidadService.findById(idpublicidad);
+		Publicidad editar_publicidad = publicidadServiceImpl.findById(idpublicidad);
 		editar_publicidad.setTitulo(publicidad.getTitulo());
 		editar_publicidad.setUrl_imagen(publicidad.getUrl_imagen());
+		editar_publicidad.setImagenId(publicidad.getImagenId());
 		editar_publicidad.setEstado(publicidad.getEstado());
-		return publicidadService.save(editar_publicidad);
+		return publicidadServiceImpl.save(editar_publicidad);
 		
 	}
-	@DeleteMapping("eliminarpublicidad/{idpublicidad}")
+	@DeleteMapping("eliminar/{id}")
 	public void delete(@PathVariable Long idpublicidad) {
-		publicidadService.delete(idpublicidad);
+		publicidadServiceImpl.delete(idpublicidad);
 	  
         System.out.print("Rol Borrado");
 	}
-
+	 @GetMapping("/list")
+	 public ResponseEntity<List<Publicidad>> findByOrderById(){
+		List<Publicidad> findByOrderById = publicidadServiceImpl.findByOrderById();
+		 return new ResponseEntity(findByOrderById, HttpStatus.OK);
+		 
+	 }
+	  @PostMapping("/upload")
+	   public ResponseEntity<?> upload(@RequestParam MultipartFile multipartFile)throws IOException {
+		  BufferedImage bi = ImageIO.read(multipartFile.getInputStream());
+	        if(bi == null){
+	            return new ResponseEntity(new Mensaje("imagen no válida"), HttpStatus.BAD_REQUEST);
+	        }
+	        Map result = publicidService.upload(multipartFile);
+	        Publicidad publicidad = 
+	        		new Publicidad((String)result.get("original_filename"),
+	        		 (String)result.get("url"),
+                     (String)result.get("public_id"),
+                     (String)result.get("estado"));
+	        publicidadServiceImpl.save(publicidad);
+	        return new ResponseEntity(new Mensaje("imagen subida"), HttpStatus.OK);		
+	  }
+	  @DeleteMapping("/delete/{id}")
+	  public ResponseEntity<?> delete(@PathVariable("id") long idpublicidad)throws IOException {
+		  if(!publicidadServiceImpl.exists(idpublicidad))
+			  return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
+		  Publicidad publicidad = publicidadServiceImpl.getOne(idpublicidad).get();
+		  Map result = publicidService.delete(publicidad.getImagenId());
+		  publicidadServiceImpl.delete(idpublicidad);
+		  return new ResponseEntity(new Mensaje("imagen eliminada"), HttpStatus.OK); 
+	  }
 }

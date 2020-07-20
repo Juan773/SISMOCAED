@@ -44,9 +44,11 @@ public class Detalle_convoControlle {
 	public Detalle_convo update(@RequestBody Detalle_convo detalle_convo, @PathVariable Long iddetalle_convo) {
 		Detalle_convo editar_convo = detalle_convoService.findById(iddetalle_convo);
 		
-	    editar_convo.setFormato_f012_f01(detalle_convo.getFormato_f012_f01());
-	    editar_convo.setFormato_f012_f02(detalle_convo.getFormato_f012_f02());
-	    editar_convo.setCurriculum(detalle_convo.getCurriculum());
+	    editar_convo.setUrl_solicitud(detalle_convo.getUrl_solicitud());
+	    editar_convo.setFecha(detalle_convo.getFecha());
+	    editar_convo.setUrl_carta(detalle_convo.getUrl_carta());
+	    editar_convo.setUrl_curriculum(detalle_convo.getUrl_curriculum());
+	    editar_convo.setDescripcion(detalle_convo.getDescripcion());
 	    editar_convo.setIdconvocatoria(detalle_convo.getIdconvocatoria());
 	    editar_convo.setIdpostulante(detalle_convo.getIdpostulante());
 	    

@@ -48,6 +48,7 @@ public class PublicidadServiceImpl implements PublicidadService{
 	}
 
 	@Override
+<<<<<<< HEAD
 	public List<Publicidad> findByOrderById() {
 		// TODO Auto-generated method stub
 		return publicidadService.findByOrderById();
@@ -59,5 +60,14 @@ public class PublicidadServiceImpl implements PublicidadService{
 	 public boolean exists(long id){
 		 return publicidadDao.existsById(id);
 	 }
+=======
+	public Optional<Publicidad> findById1(Long idpublicidad) {
+		// TODO Auto-generated method stub
+		return publicidadDao.findById(idpublicidad);
+	}
+
+	
+	
+>>>>>>> 0e152cd4e9eed6c63927afd22b1d7a09d66771a3
 
 }

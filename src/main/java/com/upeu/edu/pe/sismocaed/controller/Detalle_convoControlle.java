@@ -45,7 +45,11 @@ public class Detalle_convoControlle {
 		Detalle_convo editar_convo = detalle_convoService.findById(iddetalle_convo);
 		
 	    editar_convo.setUrl_solicitud(detalle_convo.getUrl_solicitud());
+<<<<<<< HEAD
 	    editar_convo.setFecha(detalle_convo.getFecha());
+=======
+	    editar_convo.setFecha(detalle_convo.getFecha());;
+>>>>>>> 0e152cd4e9eed6c63927afd22b1d7a09d66771a3
 	    editar_convo.setUrl_carta(detalle_convo.getUrl_carta());
 	    editar_convo.setUrl_curriculum(detalle_convo.getUrl_curriculum());
 	    editar_convo.setDescripcion(detalle_convo.getDescripcion());

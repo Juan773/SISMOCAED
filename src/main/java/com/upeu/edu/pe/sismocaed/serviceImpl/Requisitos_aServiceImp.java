@@ -82,6 +82,13 @@ public class Requisitos_aServiceImp implements Requisitos_aService{
 		// TODO Auto-generated method stub
 		return requisitos_aDao.findById(idrequisitos_a).orElseThrow(null);
 	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Requisitos_a> getFormato012() {
+		// TODO Auto-generated method stub
+		return em.createNamedStoredProcedureQuery("list_formato012").getResultList();
+	}
 	
 	
 }

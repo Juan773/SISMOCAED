@@ -17,7 +17,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="requisitos_a")
 @NamedStoredProcedureQueries({
-	@NamedStoredProcedureQuery(name="list_procedure" , procedureName="list_req")
+	@NamedStoredProcedureQuery(name="list_procedure" , procedureName="list_req"),
+	@NamedStoredProcedureQuery(name= "list_formato012", procedureName = "Formato_F102")
 })
 public class Requisitos_a implements Serializable{
 

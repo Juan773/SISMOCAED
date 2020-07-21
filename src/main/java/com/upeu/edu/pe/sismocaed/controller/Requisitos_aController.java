@@ -46,7 +46,7 @@ public class Requisitos_aController {
 	public Requisitos_a create(@RequestBody Requisitos_a requisitos_a) {
 		return requisitos_aService.save(requisitos_a);
 	}
-	
+		
 	@PutMapping("/editreque_a/{idrequisitos_a}")
 	public Requisitos_a update(@RequestBody Requisitos_a requisitos_a, @PathVariable Long idrequisitos_a) {
 		Requisitos_a editar_requisitos_a = requisitos_aService.findById(idrequisitos_a);
@@ -90,4 +90,10 @@ public class Requisitos_aController {
     			.map(file -> uploadFile(file, null))
     			.collect(Collectors.toList());
     }*/
+    
+    @GetMapping("/pro_getformato")
+    public List<Requisitos_a> getPro_Formato(){
+    	return requisitos_aService.getFormato012();
+    }
+    
 }

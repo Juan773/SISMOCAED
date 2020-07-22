@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,12 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.upeu.edu.pe.sismocaed.entity.Requisitos_a;
 import com.upeu.edu.pe.sismocaed.service.Requisitos_aService;
 
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/apisis")
 @RestController
 public class Requisitos_aController {
@@ -73,12 +71,6 @@ public class Requisitos_aController {
     public Requisitos_a uploadFile(@RequestParam("archivos") MultipartFile file, Requisitos_a requisitos_a) throws IOException {
     	 Requisitos_a fileName = requisitos_aService.storeFile(file,requisitos_a);
     	 
-    	 String documentos = ServletUriComponentsBuilder.fromCurrentContextPath()
-    			   .path("/downloadFile")
-    			   .path(fileName.getDescripcion())
-    			   .path(fileName.getArchivo())
-    			   .path(fileName.getDocumentos())
-    			   .toUriString();
     	 
     	 return new Requisitos_a(null, fileName.getDescripcion(), file.getOriginalFilename(), file.getContentType(), fileName.getIde_profesional(), file.getBytes());
     }

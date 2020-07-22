@@ -12,6 +12,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.upeu.edu.pe.sismocaed.dao.Requisitos_aDao;
+import com.upeu.edu.pe.sismocaed.entity.E_Profesional;
 import com.upeu.edu.pe.sismocaed.entity.Requisitos_a;
 import com.upeu.edu.pe.sismocaed.exception.FileStorageException;
 import com.upeu.edu.pe.sismocaed.service.Requisitos_aService;
@@ -62,6 +63,8 @@ public class Requisitos_aServiceImp implements Requisitos_aService{
 		// TODO Auto-generated method stub
 	    String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 	    String descri = StringUtils.cleanPath(requisitos_a.getDescripcion());
+	    E_Profesional ide_pro = requisitos_a.getIde_profesional();
+	    
 	    
 	    try {
 	    	//Check if the file´s name contains invalid characters
@@ -69,7 +72,7 @@ public class Requisitos_aServiceImp implements Requisitos_aService{
 				 throw new FileStorageException("Sorry ! Filename contains invalid path sequence " + fileName);
 			}
 			
-			Requisitos_a  requi_a = new Requisitos_a(null, descri, fileName, file.getContentType(), requisitos_a.getIde_profesional(), file.getBytes());
+			Requisitos_a  requi_a = new Requisitos_a(null, descri, fileName, file.getContentType(), ide_pro, file.getBytes());
 			return requisitos_aDao.save(requi_a);
 		} catch (IOException ex) {
 			// TODO: handle exception

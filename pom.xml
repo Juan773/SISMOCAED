@@ -87,13 +87,12 @@
 			    <version>1.18.12</version>
 			    <scope>provided</scope>
 			</dependency>
-<<<<<<< HEAD
 		<dependency>
 			<groupId>com.cloudinary</groupId>
 			<artifactId>cloudinary-http44</artifactId>
 			<version>1.24.0</version>
 		</dependency>
-=======
+
 
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
@@ -102,8 +101,6 @@
 				</artifactId>
 				<optional>true</optional>
 			</dependency>
-			
->>>>>>> 0e152cd4e9eed6c63927afd22b1d7a09d66771a3
 	</dependencies>
 
 	<build>

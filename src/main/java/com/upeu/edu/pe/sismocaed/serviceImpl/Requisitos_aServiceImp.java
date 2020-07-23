@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.upeu.edu.pe.sismocaed.dao.Requisitos_aDao;
@@ -59,6 +60,7 @@ public class Requisitos_aServiceImp implements Requisitos_aService{
 	}
 
 	@Override
+	@PostMapping("/upload/file")
 	public Requisitos_a storeFile(MultipartFile file, Requisitos_a requisitos_a) {
 		// TODO Auto-generated method stub
 	    String fileName = StringUtils.cleanPath(file.getOriginalFilename());

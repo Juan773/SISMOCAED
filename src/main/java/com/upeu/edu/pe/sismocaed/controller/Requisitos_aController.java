@@ -1,13 +1,10 @@
 package com.upeu.edu.pe.sismocaed.controller;
 
+import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,18 +13,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.upeu.edu.pe.sismocaed.entity.E_Profesional;
-import com.upeu.edu.pe.sismocaed.entity.Publicidad;
 import com.upeu.edu.pe.sismocaed.entity.Requisitos_a;
 import com.upeu.edu.pe.sismocaed.service.Requisitos_aService;
 
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/apisis")
 @RestController
 public class Requisitos_aController {
@@ -50,7 +44,7 @@ public class Requisitos_aController {
 	public Requisitos_a create(@RequestBody Requisitos_a requisitos_a) {
 		return requisitos_aService.save(requisitos_a);
 	}
-	
+		
 	@PutMapping("/editreque_a/{idrequisitos_a}")
 	public Requisitos_a update(@RequestBody Requisitos_a requisitos_a, @PathVariable Long idrequisitos_a) {
 		Requisitos_a editar_requisitos_a = requisitos_aService.findById(idrequisitos_a);
@@ -66,37 +60,32 @@ public class Requisitos_aController {
     public void delete(@PathVariable Long idrequisitos_a) {
     	requisitos_aService.delete(idrequisitos_a);
     }
-    
+    	
     @GetMapping("/req_a_procedure")
     public List<Requisitos_a> getReq_aProcedure(){
     	return requisitos_aService.getReq_aProcedure();
     }
     
-    @RequestMapping(value = "/file/requi", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String uploadRequisitos(@RequestParam("documentos") MultipartFile file) { 
-        
-		try {
-			Requisitos_a requisitos_a = new Requisitos_a(null, null, file.getOriginalFilename(), file.getContentType(), null, file.getBytes());
-			requisitos_aService.save(requisitos_a);
-			return "File uploaded successfully! -> filename = " + file.getOriginalFilename();
-		} catch (Exception e) {
-			// TODO: handle exception
-			return "FAIL! Maybe You had uploaded the file before or the file's size > 500KB";
-		}
-	}
     
-    @GetMapping("/file/{idrequistos_e}")
-	  public ResponseEntity<byte[]> getReque(@PathVariable Long idrequistos_e) {
-	    Optional<Requisitos_a> fileOptional = requisitos_aService.findById1(idrequistos_e);
-	    
-	    if(fileOptional.isPresent()) {
-	      Requisitos_a file = fileOptional.get();
-	      return ResponseEntity.ok()
-	          .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getDocumentos() + "\"")
-	          .body(file.getPic());  
-	    }
-	    
-	    return ResponseEntity.status(404).body(null);
-	  }
+    @PostMapping("/upload/file")
+    public Requisitos_a uploadFile(@RequestParam("archivos") MultipartFile file, Requisitos_a requisitos_a) throws IOException {
+    	 Requisitos_a fileName = requisitos_aService.storeFile(file,requisitos_a);
+    	 
+    	 
+    	 return new Requisitos_a(null, fileName.getDescripcion(), file.getOriginalFilename(), file.getContentType(), fileName.getIde_profesional(), file.getBytes());
+    }
+    
+   /* @PostMapping("/uploadMultipleFiles") 
+    public List<Requisitos_a>(@RequestParam("archivos") MultipartFile[] files) {
+    	return Arrays.asList(files)
+    			.stream()
+    			.map(file -> uploadFile(file, null))
+    			.collect(Collectors.toList());
+    }*/
+    
+    @GetMapping("/pro_getformato")
+    public List<Requisitos_a> getPro_Formato(){
+    	return requisitos_aService.getFormato012();
+    }
     
 }

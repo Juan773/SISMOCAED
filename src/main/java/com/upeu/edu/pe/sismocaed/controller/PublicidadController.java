@@ -137,6 +137,32 @@ public class PublicidadController {
 		  publicidadServiceImpl.delete(idpublicidad);
 		  return new ResponseEntity(new Mensaje("imagen eliminada"), HttpStatus.OK); 
 	  }
-
+	
+	/*@RequestMapping(value = "/file/upload", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public String uploadMultipartFile(@RequestParam("url_imagen") MultipartFile file) {
+                
+		try {
+			Publicidad publicidad = new Publicidad(null, file.getOriginalFilename(), file.getContentType(), "1", file.getBytes());
+			publicidadService.save(publicidad);
+			return "File uploaded successfully! -> filename = " + file.getOriginalFilename();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "FAIL! Maybe You had uploaded the file before or the file's size > 500KB";
+		}
+	}
+	
+	@GetMapping("/api/file/{idpublicidad}")
+	  public ResponseEntity<byte[]> getFile(@PathVariable Long idpublicidad) {
+	    Optional<Publicidad> fileOptional = publicidadService.findById1(idpublicidad);
+	    
+	    if(fileOptional.isPresent()) {
+	      Publicidad file = fileOptional.get();
+	      return ResponseEntity.ok()
+	          .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getUrl_imagen() + "\"")
+	          .body(file.getPic());  
+	    }
+	    
+	    return ResponseEntity.status(404).body(null);
+	  }*/
 }
 

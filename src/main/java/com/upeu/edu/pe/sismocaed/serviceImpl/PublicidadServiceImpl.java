@@ -1,6 +1,5 @@
 package com.upeu.edu.pe.sismocaed.serviceImpl;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -12,17 +11,20 @@ import com.upeu.edu.pe.sismocaed.dao.PublicidadDao;
 import com.upeu.edu.pe.sismocaed.entity.Publicidad;
 import com.upeu.edu.pe.sismocaed.service.PublicidadService;
 @Service
+@Transactional
 public class PublicidadServiceImpl implements PublicidadService{
 	
 	
-
-	
 	@Autowired
 	private PublicidadDao publicidadDao;
+	
+	@Autowired
+	private PublicidadService publicidadService;
 
 
 	@Override
 	@Transactional(readOnly = true)
+	
 	public List<Publicidad> findAll() {
 		// TODO Auto-generated method stub
 		return (List<Publicidad>) publicidadDao.findAll();
@@ -47,12 +49,19 @@ public class PublicidadServiceImpl implements PublicidadService{
 	}
 
 	@Override
-	public Optional<Publicidad> findById1(Long idpublicidad) {
-		// TODO Auto-generated method stub
-		return publicidadDao.findById(idpublicidad);
-	}
 
+	public List<Publicidad> findByOrderById() {
+		// TODO Auto-generated method stub
+		return publicidadService.findByOrderById();
+	}
 	
+	public Optional<Publicidad> getOne(long id){
+		return publicidadDao.findById(id);
+	}
+	 public boolean exists(long id){
+		 return publicidadDao.existsById(id);
+	 }
+
 	
 
 }

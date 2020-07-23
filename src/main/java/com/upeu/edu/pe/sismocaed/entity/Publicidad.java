@@ -19,25 +19,20 @@ public class Publicidad implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@JsonView(View.FileInfo.class)
 	public Long idpublicidad;
-	@JsonView(View.FileInfo.class)
 	public String titulo;
 	public String url_imagen;
+    private String imagenId;
 	public String estado;
-	@Lob
-	  @Column(name = "pic")
-	  private byte[] pic;
 	public Publicidad() {
-		super();
+
 	}
-	public Publicidad(Long idpublicidad, String titulo, String url_imagen, String estado, byte[] pic) {
+	public Publicidad(String titulo, String url_imagen, String imagenId, String estado) {
 		super();
-		this.idpublicidad = idpublicidad;
 		this.titulo = titulo;
 		this.url_imagen = url_imagen;
+		this.imagenId = imagenId;
 		this.estado = estado;
-		this.pic = pic;
 	}
 	public Long getIdpublicidad() {
 		return idpublicidad;
@@ -57,20 +52,17 @@ public class Publicidad implements Serializable {
 	public void setUrl_imagen(String url_imagen) {
 		this.url_imagen = url_imagen;
 	}
+	public String getImagenId() {
+		return imagenId;
+	}
+	public void setImagenId(String imagenId) {
+		this.imagenId = imagenId;
+	}
 	public String getEstado() {
 		return estado;
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public byte[] getPic() {
-		return pic;
-	}
-	public void setPic(byte[] pic) {
-		this.pic = pic;
-	}
-	
-
-    	
 
 }

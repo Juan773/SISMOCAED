@@ -70,7 +70,7 @@ public class PublicidadController {
         System.out.print("Rol Borrado");
 	}
 	
-	@RequestMapping(value = "/file/upload", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	/*@RequestMapping(value = "/file/upload", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String uploadMultipartFile(@RequestParam("url_imagen") MultipartFile file) {
                 
 		try {
@@ -95,6 +95,6 @@ public class PublicidadController {
 	    }
 	    
 	    return ResponseEntity.status(404).body(null);
-	  }
+	  }*/
 
 }

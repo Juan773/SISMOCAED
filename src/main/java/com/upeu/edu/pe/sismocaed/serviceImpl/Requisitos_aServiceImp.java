@@ -94,6 +94,12 @@ public class Requisitos_aServiceImp implements Requisitos_aService{
 		// TODO Auto-generated method stub
 		return em.createNamedStoredProcedureQuery("list_formato012").getResultList();
 	}
+
+	@Override
+	public List<Requisitos_a> listprocedure() {
+		// TODO Auto-generated method stub
+		return requisitos_aDao.listprocedure();
+	}
 	
 	
 }

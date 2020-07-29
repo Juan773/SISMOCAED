@@ -88,4 +88,8 @@ public class Requisitos_aController {
     	return requisitos_aService.getFormato012();
     }
     
+    @GetMapping("/listFormato")
+    public List<Requisitos_a> listformato(){
+    	return requisitos_aService.listprocedure();
+    }
 }

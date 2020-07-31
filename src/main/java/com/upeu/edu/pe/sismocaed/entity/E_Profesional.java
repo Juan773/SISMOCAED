@@ -26,19 +26,25 @@ public class E_Profesional implements Serializable{
 	public String facultad;
 	@Column(length=45)
 	public String vacantes;
+	@Column(length = 45)
+	public String contacto;
+	@Column(length = 45)
+	public String fecha_pre;
 	@ManyToOne
 	@JoinColumn(name="iduniversidad") 
 	Universidad iduniversidad;
 	public E_Profesional() {
 		super();
 	}
-	public E_Profesional(Long ide_profesional, String nombre, String facultad, String vacantes,
-			Universidad iduniversidad) {
+	public E_Profesional(Long ide_profesional, String nombre, String facultad, String vacantes, String contacto,
+			String fecha_pre, Universidad iduniversidad) {
 		super();
 		this.ide_profesional = ide_profesional;
 		this.nombre = nombre;
 		this.facultad = facultad;
 		this.vacantes = vacantes;
+		this.contacto = contacto;
+		this.fecha_pre = fecha_pre;
 		this.iduniversidad = iduniversidad;
 	}
 	public Long getIde_profesional() {
@@ -65,12 +71,25 @@ public class E_Profesional implements Serializable{
 	public void setVacantes(String vacantes) {
 		this.vacantes = vacantes;
 	}
+	public String getContacto() {
+		return contacto;
+	}
+	public void setContacto(String contacto) {
+		this.contacto = contacto;
+	}
+	public String getFecha_pre() {
+		return fecha_pre;
+	}
+	public void setFecha_pre(String fecha_pre) {
+		this.fecha_pre = fecha_pre;
+	}
 	public Universidad getIduniversidad() {
 		return iduniversidad;
 	}
 	public void setIduniversidad(Universidad iduniversidad) {
 		this.iduniversidad = iduniversidad;
 	}
+	
 	
 	
 }

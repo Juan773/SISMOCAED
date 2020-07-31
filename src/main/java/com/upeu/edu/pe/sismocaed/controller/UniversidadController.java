@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.upeu.edu.pe.sismocaed.entity.Universidad;
 import com.upeu.edu.pe.sismocaed.service.UniversidadService;
 
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/apisis")
 @RestController
 public class UniversidadController {

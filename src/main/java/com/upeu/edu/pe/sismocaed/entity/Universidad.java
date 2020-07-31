@@ -39,7 +39,6 @@ public class Universidad implements Serializable{
 	
 	
 	public Universidad() {
-		super();
 	}
 	
 	public Universidad(Long iduniversidad, String nombre, String direccion, String pais, String totalvacantes) {

@@ -16,4 +16,5 @@ public interface Requisitos_aService {
 	public Requisitos_a storeFile(MultipartFile file, Requisitos_a requisitos_a);
 	public Requisitos_a getFile(Long idrequisitos_a);
 	public List<Requisitos_a> getFormato012();
+	List<Requisitos_a> listprocedure();
 }

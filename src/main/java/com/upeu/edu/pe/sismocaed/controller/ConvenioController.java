@@ -2,6 +2,8 @@ package com.upeu.edu.pe.sismocaed.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,7 +39,7 @@ public class ConvenioController {
 	
 	@PostMapping("/saveconv")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Convenio create(@RequestBody Convenio convenio) {
+	public Convenio create(@Valid @RequestBody Convenio convenio) {
 		return convenioServive.save(convenio);
 	}
 	

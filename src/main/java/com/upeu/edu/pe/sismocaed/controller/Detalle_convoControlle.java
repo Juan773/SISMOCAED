@@ -1,9 +1,11 @@
 package com.upeu.edu.pe.sismocaed.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +20,7 @@ import com.upeu.edu.pe.sismocaed.entity.Detalle_convo;
 import com.upeu.edu.pe.sismocaed.service.Detalle_convoService;
 
 @RequestMapping("/apisis")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 public class Detalle_convoControlle {
 
@@ -55,7 +58,7 @@ public class Detalle_convoControlle {
 	    return detalle_convoService.save(editar_convo);
 	}
 	
-	@DeleteMapping("/deletedeta_conv")
+	@DeleteMapping("/deletedeta_conv/{iddetalle_convo}")
 	public void delete(@PathVariable Long iddetalle_convo) {
 		detalle_convoService.delete(iddetalle_convo);
 	}

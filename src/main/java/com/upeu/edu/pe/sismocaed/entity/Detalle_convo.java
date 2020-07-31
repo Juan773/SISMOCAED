@@ -8,8 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="detalle_convo")
@@ -19,6 +22,7 @@ public class Detalle_convo implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	public Long iddetalle_convo;
 	@Column(length=45)
 	public String url_solicitud;
@@ -36,11 +40,15 @@ public class Detalle_convo implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="idpostulante")
 	Postulante idpostulante;
+	
+	@Lob
+    private byte[] data;
+	
 	public Detalle_convo() {
 		super();
 	}
 	public Detalle_convo(Long iddetalle_convo, String url_solicitud, String fecha, String url_carta,
-			String url_curriculum, String descripcion, Convocatoria idconvocatoria, Postulante idpostulante) {
+			String url_curriculum, String descripcion, Convocatoria idconvocatoria, Postulante idpostulante,byte[] data) {
 		super();
 		this.iddetalle_convo = iddetalle_convo;
 		this.url_solicitud = url_solicitud;
@@ -50,6 +58,7 @@ public class Detalle_convo implements Serializable{
 		this.descripcion = descripcion;
 		this.idconvocatoria = idconvocatoria;
 		this.idpostulante = idpostulante;
+		this.data = data;
 	}
 	public Long getIddetalle_convo() {
 		return iddetalle_convo;
@@ -99,6 +108,12 @@ public class Detalle_convo implements Serializable{
 	public void setIdpostulante(Postulante idpostulante) {
 		this.idpostulante = idpostulante;
 	}
-	
+	  public byte[] getData() {
+		    return data;
+  }
+
+    public void setData(byte[] data) {
+		    this.data = data;
+  }
 	
 }

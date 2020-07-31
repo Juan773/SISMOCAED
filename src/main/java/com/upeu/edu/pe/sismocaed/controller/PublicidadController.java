@@ -46,7 +46,7 @@ import com.upeu.edu.pe.sismocaed.serviceImpl.PublicidService;
 import com.upeu.edu.pe.sismocaed.service.PublicidadService;
 
 @RestController
-@RequestMapping("/publicidad")
+@RequestMapping("/apisis")
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class PublicidadController {
 	
@@ -128,8 +128,8 @@ public class PublicidadController {
 	        
 	        return new ResponseEntity(new Mensaje("imagen subida"), HttpStatus.OK);		
 	  }
-	  @DeleteMapping("/delete/{id}")
-	  public ResponseEntity<?> delete(@PathVariable("id") long idpublicidad)throws IOException {
+	  @DeleteMapping("/delete/{idpublicidad}")
+	  public ResponseEntity<?> delete(@PathVariable("idpublicidad") long idpublicidad)throws IOException {
 		  if(!publicidadServiceImpl.exists(idpublicidad))
 			  return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
 		  Publicidad publicidad = publicidadServiceImpl.getOne(idpublicidad).get();

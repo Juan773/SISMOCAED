@@ -52,7 +52,7 @@ public class PublicidadServiceImpl implements PublicidadService{
 
 	public List<Publicidad> findByOrderById() {
 		// TODO Auto-generated method stub
-		return publicidadService.findByOrderById();
+		return (List<Publicidad>)publicidadDao.findAll();
 	}
 	
 	public Optional<Publicidad> getOne(long id){

@@ -10,10 +10,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedStoredProcedureQueries;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="convocatoria")
+
+@NamedStoredProcedureQueries({
+	@NamedStoredProcedureQuery(name="convo_probyid", procedureName = "listconv_byid",
+	                           parameters= {@StoredProcedureParameter(mode = ParameterMode.IN,
+	                           name = "p_idconvocatoria", type = Long.class)})
+})
+
 public class Convocatoria implements Serializable{
 
 	private static final long serialVersionUID = 203527103058157394L;

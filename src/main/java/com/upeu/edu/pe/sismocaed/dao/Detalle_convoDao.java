@@ -9,5 +9,5 @@ import com.upeu.edu.pe.sismocaed.entity.Detalle_convo;
 
 @Repository
 public interface Detalle_convoDao extends CrudRepository<Detalle_convo,Long>{
-   
+
 }

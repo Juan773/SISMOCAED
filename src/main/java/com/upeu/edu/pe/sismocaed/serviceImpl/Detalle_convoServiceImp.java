@@ -1,6 +1,10 @@
 package com.upeu.edu.pe.sismocaed.serviceImpl;
 
+import java.nio.file.Path;
 import java.util.List;
+import java.util.Map;
+
+import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +19,10 @@ public class Detalle_convoServiceImp implements Detalle_convoService{
 
 	@Autowired
 	private Detalle_convoDao detalle_convoDao;
+	@Autowired
+	private EntityManager em;
+
+	
 	
 	@Override
 	@Transactional(readOnly = true)
@@ -40,6 +48,4 @@ public class Detalle_convoServiceImp implements Detalle_convoService{
 		// TODO Auto-generated method stub
 		detalle_convoDao.deleteById(iddetalle_convo);
 	}
-
-	
 }

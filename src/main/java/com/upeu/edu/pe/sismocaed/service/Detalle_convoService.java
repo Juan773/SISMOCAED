@@ -15,5 +15,5 @@ public interface Detalle_convoService {
 	public Detalle_convo findById(Long iddetalle_convo);
 	public Detalle_convo save(Detalle_convo detalle_convo);
 	public void delete(Long iddetalle_convo);
-
+	//public Detalle_convo findByCodigo(String codigo);
 }

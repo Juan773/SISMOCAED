@@ -2,7 +2,9 @@ package com.upeu.edu.pe.sismocaed.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedStoredProcedureQueries;
 import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
@@ -44,6 +47,10 @@ public class Convocatoria implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="idpublicidad")
 	Publicidad idpublicidad;
+	
+	//@OneToMany(mappedBy = "convocatoria")
+   // private Detalle_convo detalle_convo;
+	
 	public Convocatoria() {
 		super();
 		// TODO Auto-generated constructor stub

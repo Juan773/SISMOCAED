@@ -10,19 +10,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="detalle_convo")
+//@NamedQuery(name = "Detalle_convo.findByCodigo",query="select p.codigo, dc.descripcion, dc.fecha, dc.url_carta, dc.url_curriculum, dc.url_solicitud " + 
+  //     "c.nombre_con from  postulante p, detalle_convo dc, convocatoria c " + 
+   //     "where dc.idpostulante=p.idpostulante and c.idconvocatoria = dc.idconvocatoria " + 
+   //   "and p.codigo= ?1")
 public class Detalle_convo implements Serializable{
 
 	private static final long serialVersionUID = -8377764425889229893L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	public Long iddetalle_convo;
 	@Column(length=45)
 	public String url_solicitud;
@@ -40,21 +42,43 @@ public class Detalle_convo implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="idpostulante")
 	Postulante idpostulante;
-	
 	@Lob
-    private byte[] data;
-	
+	private byte[] data;
+
 	public Detalle_convo() {
-		super();
+			super();
 	}
 	public Detalle_convo(Long iddetalle_convo, String url_solicitud, String fecha, String url_carta,
-			String url_curriculum, String descripcion, Convocatoria idconvocatoria, Postulante idpostulante,byte[] data) {
+			String url_curriculum, String descripcion, Convocatoria idconvocatoria, Postulante idpostulante,
+			byte[] data) {
 		super();
 		this.iddetalle_convo = iddetalle_convo;
 		this.url_solicitud = url_solicitud;
 		this.fecha = fecha;
 		this.url_carta = url_carta;
 		this.url_curriculum = url_curriculum;
+		this.descripcion = descripcion;
+		this.idconvocatoria = idconvocatoria;
+		this.idpostulante = idpostulante;
+		this.data = data;
+	}
+	
+	public Detalle_convo(Long iddetalle_convo, String url_solicitud, String fecha, String url_carta,
+			String url_curriculum, String descripcion, Convocatoria idconvocatoria, Postulante idpostulante) {
+		super();
+		this.iddetalle_convo = iddetalle_convo;
+		this.url_solicitud = url_solicitud;
+		this.fecha = fecha;
+		this.url_carta = url_carta;
+		this.url_curriculum = url_curriculum;
+		this.descripcion = descripcion;
+		this.idconvocatoria = idconvocatoria;
+		this.idpostulante = idpostulante;
+	}
+	public Detalle_convo(String fecha, String descripcion, Convocatoria idconvocatoria, Postulante idpostulante,
+			byte[] data) {
+		super();
+		this.fecha = fecha;
 		this.descripcion = descripcion;
 		this.idconvocatoria = idconvocatoria;
 		this.idpostulante = idpostulante;
@@ -108,12 +132,18 @@ public class Detalle_convo implements Serializable{
 	public void setIdpostulante(Postulante idpostulante) {
 		this.idpostulante = idpostulante;
 	}
-	  public byte[] getData() {
+	 public byte[] getData() {
 		    return data;
-  }
+		  }
 
-    public void setData(byte[] data) {
+		  public void setData(byte[] data) {
 		    this.data = data;
-  }
+		  }
+		@Override
+		public String toString() {
+			return "Detalle_convo [iddetalle_convo=" + iddetalle_convo + ", url_solicitud=" + url_solicitud + ", fecha="
+					+ fecha + ", url_carta=" + url_carta + ", url_curriculum=" + url_curriculum + ", descripcion="
+					+ descripcion + ", idconvocatoria=" + idconvocatoria + ", idpostulante=" + idpostulante + "]";
+		}
 	
 }

@@ -108,7 +108,7 @@ public class PublicidadController {
 		 return new ResponseEntity(findByOrderById, HttpStatus.OK);
 		 
 	 }
-	  @PostMapping("/upload")
+	  @PostMapping("/uploadimg")
 	   public ResponseEntity<?> upload(@RequestParam MultipartFile multipartFile)throws IOException {
 		  BufferedImage bi = ImageIO.read(multipartFile.getInputStream());
 		  System.out.println(bi);

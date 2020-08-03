@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.upeu.edu.pe.sismocaed.entity.E_Profesional;
 import com.upeu.edu.pe.sismocaed.entity.Requisitos_a;
 import com.upeu.edu.pe.sismocaed.service.Requisitos_aService;
 
@@ -70,9 +71,10 @@ public class Requisitos_aController {
     @PostMapping("/upload/file")
     public Requisitos_a uploadFile(@RequestParam("archivos") MultipartFile file, Requisitos_a requisitos_a) throws IOException {
     	 Requisitos_a fileName = requisitos_aService.storeFile(file,requisitos_a);
+    	 E_Profesional ide_pro = requisitos_a.getIde_profesional();
     	 
     	 
-    	 return new Requisitos_a(null, fileName.getDescripcion(), file.getOriginalFilename(), file.getContentType(), fileName.getIde_profesional(), file.getBytes());
+    	 return new Requisitos_a(null, fileName.getDescripcion(), file.getOriginalFilename(), file.getContentType(), ide_pro, file.getBytes());
     }
     
    /* @PostMapping("/uploadMultipleFiles") 

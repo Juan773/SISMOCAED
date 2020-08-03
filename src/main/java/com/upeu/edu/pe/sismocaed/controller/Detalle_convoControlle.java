@@ -6,8 +6,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,8 +28,11 @@ import com.upeu.edu.pe.sismocaed.message.ResponseMessage;
 import com.upeu.edu.pe.sismocaed.service.Detalle_convoService;
 import com.upeu.edu.pe.sismocaed.serviceImpl.Detalle_convoServiceImp;
 
+
 @RequestMapping("/apisis_detalle")
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+
+
 @RestController
 public class Detalle_convoControlle {
 

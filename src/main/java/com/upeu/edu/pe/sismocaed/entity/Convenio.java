@@ -84,7 +84,4 @@ public class Convenio implements Serializable{
 		this.iduniversidad = iduniversidad;
 	}
 	
-	
-	
-	
 }

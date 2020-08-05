@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.upeu.edu.pe.sismocaed.entity.Universidad;
+import com.upeu.edu.pe.sismocaed.exception.Mensaje;
 import com.upeu.edu.pe.sismocaed.service.UniversidadService;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -36,12 +38,14 @@ public class UniversidadController {
     	return universidadService.findById(iduniversidad);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/saveuni")
     @ResponseStatus(HttpStatus.CREATED)
     public Universidad create(@RequestBody Universidad universidad) {
     	return universidadService.save(universidad);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edituni/{iduniversidad}")
     public Universidad update(@RequestBody Universidad universidad, @PathVariable Long iduniversidad) {
         Universidad editar_universidad = universidadService.findById(iduniversidad);
@@ -54,6 +58,7 @@ public class UniversidadController {
         return universidadService.save(editar_universidad);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/deleteuni/{iduniversidad}")
     public void delete(@PathVariable Long iduniversidad) {
     	universidadService.delete(iduniversidad);

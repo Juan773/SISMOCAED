@@ -32,6 +32,7 @@ import com.upeu.edu.pe.sismocaed.security.jwt.JwtProvider;
 import com.upeu.edu.pe.sismocaed.security.service.RolService;
 import com.upeu.edu.pe.sismocaed.security.service.UsuarioService;
 
+
 @RestController
 @RequestMapping("/auth")
 @CrossOrigin

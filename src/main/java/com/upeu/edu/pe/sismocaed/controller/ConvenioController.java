@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,12 +38,14 @@ public class ConvenioController {
 		return convenioServive.findById(idconvenio);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/saveconv")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Convenio create(@Valid @RequestBody Convenio convenio) {
 		return convenioServive.save(convenio);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/editconv/{idconvenio}")
 	public Convenio update(@RequestBody Convenio convenio, @PathVariable Long idconvenio) {
 		Convenio editar_convenio = convenioServive.findById(idconvenio);
@@ -55,6 +58,7 @@ public class ConvenioController {
 		return convenioServive.save(editar_convenio);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/deleteconv/{idconvenio}")
 	public void delete(@PathVariable Long idconvenio) {
 		convenioServive.delete(idconvenio);

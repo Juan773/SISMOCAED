@@ -15,13 +15,15 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.upeu.edu.pe.sismocaed.security.entity.Usuario;
+
 @Entity
 @Table(name="opcion")
 public class Opcion implements Serializable{
  
  
 	private static final long serialVersionUID = -3170127030020972488L;
-	@Id
+	  @Id
   	  @GeneratedValue(strategy = GenerationType.IDENTITY)
       private Long idopcion;
       private String opcion;

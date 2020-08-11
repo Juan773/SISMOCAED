@@ -29,7 +29,7 @@ import com.upeu.edu.pe.sismocaed.service.Detalle_convoService;
 import com.upeu.edu.pe.sismocaed.serviceImpl.Detalle_convoServiceImp;
 
 
-@RequestMapping("/apisis_detalle")
+@RequestMapping("/apisis")
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 
 

@@ -136,15 +136,17 @@ public class PublicidadController {
 	        
 	        return new ResponseEntity(new Mensaje("imagen subida"), HttpStatus.OK);		
 	  }
-<<<<<<< HEAD
+
 	  
-	  @PreAuthorize("hasRole('ADMIN')")
+	  /**@PreAuthorize("hasRole('ADMIN')")
 	  @DeleteMapping("/delete/{id}")
 	  public ResponseEntity<?> delete(@PathVariable("id") long idpublicidad)throws IOException {
-=======
+		  
+		  
+	  }**/
+	  
 	  @DeleteMapping("/delete/{idpublicidad}")
 	  public ResponseEntity<?> delete(@PathVariable("idpublicidad") long idpublicidad)throws IOException {
->>>>>>> 297a38406ddd00edfe72effc003ba12afd91f286
 		  if(!publicidadServiceImpl.exists(idpublicidad))
 			  return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
 		  Publicidad publicidad = publicidadServiceImpl.getOne(idpublicidad).get();

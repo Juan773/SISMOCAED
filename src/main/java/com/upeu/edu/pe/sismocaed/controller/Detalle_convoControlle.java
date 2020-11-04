@@ -6,14 +6,11 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-<<<<<<< HEAD
 import org.springframework.security.access.prepost.PreAuthorize;
-=======
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 
->>>>>>> 297a38406ddd00edfe72effc003ba12afd91f286
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,22 +52,16 @@ public class Detalle_convoControlle {
 	public Detalle_convo read(@PathVariable Long iddetalle_convo) {
 		return detalle_convoService.findById(iddetalle_convo);
 	}
-<<<<<<< HEAD
 	
 	@PreAuthorize("hasRole('ADMIN')")
-=======
->>>>>>> 297a38406ddd00edfe72effc003ba12afd91f286
 	@PostMapping("/savedeta_conv")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Detalle_convo create(@RequestBody Detalle_convo detalle_convo){
 		return detalle_convoService.save(detalle_convo);
 	}
 	
-<<<<<<< HEAD
+
 	@PreAuthorize("hasRole('ADMIN')")
-=======
-	
->>>>>>> 297a38406ddd00edfe72effc003ba12afd91f286
 	@PutMapping("/editdeta_conv/{iddetalle_convo}")
 	public Detalle_convo update(@RequestBody Detalle_convo detalle_convo, @PathVariable Long iddetalle_convo) {
 		Detalle_convo editar_convo = detalle_convoService.findById(iddetalle_convo);
@@ -86,16 +77,14 @@ public class Detalle_convoControlle {
 	    return detalle_convoService.save(editar_convo);
 	}
 	
-<<<<<<< HEAD
+
 	@PreAuthorize("hasRole('ADMIN')")
-	@DeleteMapping("/deletedeta_conv")
-=======
 	@DeleteMapping("/deletedeta_conv/{iddetalle_convo}")
->>>>>>> 297a38406ddd00edfe72effc003ba12afd91f286
 	public void delete(@PathVariable Long iddetalle_convo) {
 		detalle_convoService.delete(iddetalle_convo);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/upload")
 	 public ResponseEntity<ResponseMessage> uploadFile(@RequestBody Detalle_convo detalle_convo)
 			  {

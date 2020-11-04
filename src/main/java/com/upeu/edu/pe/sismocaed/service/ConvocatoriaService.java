@@ -10,4 +10,5 @@ public interface ConvocatoriaService {
 	public Convocatoria findById(Long idconvocatoria);
 	public Convocatoria save(Convocatoria convocatoria);
 	public void delete(Long idconvocatoria);
+	public List<Convocatoria> convo_probyid(Long input);
 }

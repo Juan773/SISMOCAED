@@ -2,7 +2,9 @@ package com.upeu.edu.pe.sismocaed.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,10 +12,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedStoredProcedureQueries;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="convocatoria")
+
+@NamedStoredProcedureQueries({
+	@NamedStoredProcedureQuery(name="convo_probyid", procedureName = "listconv_byid",
+	                           parameters= {@StoredProcedureParameter(mode = ParameterMode.IN,
+	                           name = "p_idconvocatoria", type = Long.class)})
+})
+
 public class Convocatoria implements Serializable{
 
 	private static final long serialVersionUID = 203527103058157394L;
@@ -33,6 +47,10 @@ public class Convocatoria implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="idpublicidad")
 	Publicidad idpublicidad;
+	
+	//@OneToMany(mappedBy = "convocatoria")
+   // private Detalle_convo detalle_convo;
+	
 	public Convocatoria() {
 		super();
 		// TODO Auto-generated constructor stub

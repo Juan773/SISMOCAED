@@ -1,6 +1,9 @@
 package com.upeu.edu.pe.sismocaed.entity;
 
 import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -9,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -33,6 +37,11 @@ public class Postulante implements Serializable{
       @ManyToOne
       @JoinColumn(name="idpersona")
       Persona idpersona;
+      
+     // @OneToMany(mappedBy = "postulante")
+     // private Detalle_convo detalle_convo;
+      
+      
 	public Postulante(Long idpostulante, Long codigo, String escuela_p, String profesion, String grado, String estado,
 			Persona idpersona) {
 		super();

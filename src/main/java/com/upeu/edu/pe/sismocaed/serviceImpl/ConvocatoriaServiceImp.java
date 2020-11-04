@@ -2,6 +2,8 @@ package com.upeu.edu.pe.sismocaed.serviceImpl;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,9 @@ public class ConvocatoriaServiceImp implements ConvocatoriaService{
 	
 	@Autowired
 	private ConvocatoriaDao convocatoriaDao;
+	
+	@Autowired
+	private EntityManager em;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -40,5 +45,12 @@ public class ConvocatoriaServiceImp implements ConvocatoriaService{
 		// TODO Auto-generated method stub
 		convocatoriaDao.deleteById(idconvocatoria);;
 	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Convocatoria> convo_probyid(Long input) {
+		// TODO Auto-generated method stub
+		return em.createNamedStoredProcedureQuery("convo_probyid").setParameter("p_idconvocatoria", input).getResultList();
+				}
 
 }

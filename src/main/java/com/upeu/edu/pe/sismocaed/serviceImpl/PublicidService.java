@@ -20,7 +20,7 @@ public class PublicidService {
 	 private Map<String, String> valuesMap = new HashMap<>();
 	 
 	 public PublicidService() {
-       valuesMap.put("cloud_name", "ingenieria-de-sistemas");
+       valuesMap.put("cloud_name", "api-rest");
 	   valuesMap.put("api_key", "639162143254253");
 	   valuesMap.put("api_secret", "ql5n09_Ai524v1SGzWY0Bipj6pQ");
 	   cloudinary = new Cloudinary(valuesMap);

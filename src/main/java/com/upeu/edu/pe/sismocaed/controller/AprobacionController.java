@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,12 +35,14 @@ public class AprobacionController {
 		return aprobacionService.findById(idaprobacion);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/saveapro")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Aprobacion create(@RequestBody Aprobacion aprobacion) {
 		return aprobacionService.save(aprobacion);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/editapro/{idaprobacion}")
 	public Aprobacion update(@RequestBody Aprobacion aprobacion, @PathVariable Long idaprobacion) {
 		Aprobacion editar_aprobacion = aprobacionService.findById(idaprobacion);
@@ -52,6 +55,7 @@ public class AprobacionController {
 		return aprobacionService.save(editar_aprobacion);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/deleteapro/{idaprobacion}")
 	public void delete(@PathVariable Long idaprobacion) {
 		aprobacionService.delete(idaprobacion);

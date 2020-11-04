@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,12 +35,14 @@ public class ConvocatoriaController {
 		return convocatoriaService.findById(idconvocatoria);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/saveconvo")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Convocatoria create(@RequestBody Convocatoria convocatoria) {
 		return convocatoriaService.save(convocatoria);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/editconvo/{idconvocatoria}")
 	public Convocatoria update(@RequestBody Convocatoria convocatoria, @PathVariable Long idconvocatoria) {
 		Convocatoria editar_convocatoria = convocatoriaService.findById(idconvocatoria);
@@ -53,6 +56,7 @@ public class ConvocatoriaController {
 		return convocatoriaService.save(editar_convocatoria);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/deleteconvo/{idconvocatoria}")	
 	public void delete(@PathVariable Long idconvocatoria) {
 		convocatoriaService.delete(idconvocatoria);

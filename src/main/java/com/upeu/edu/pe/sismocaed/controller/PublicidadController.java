@@ -15,6 +15,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.http.MediaType;
@@ -76,6 +77,7 @@ public class PublicidadController {
 		
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/publicidad/publicidad")
 	@ResponseStatus(HttpStatus.CREATED)
 	@RequestMapping(method = RequestMethod.POST)
@@ -85,6 +87,8 @@ public class PublicidadController {
 			
 
 	}
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/editar/{idpublicidad}")
 	public Publicidad update(@RequestBody Publicidad publicidad, @PathVariable Long idpublicidad) {
 		Publicidad editar_publicidad = publicidadServiceImpl.findById(idpublicidad);
@@ -96,6 +100,8 @@ public class PublicidadController {
 		return publicidadServiceImpl.save(editar_publicidad);
 
 	}
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("eliminar/{id}")
 	public void delete(@PathVariable Long idpublicidad) {
 		publicidadServiceImpl.delete(idpublicidad);
@@ -108,6 +114,8 @@ public class PublicidadController {
 		 return new ResponseEntity(findByOrderById, HttpStatus.OK);
 		 
 	 }
+	 
+	  @PreAuthorize("hasRole('ADMIN')")	
 	  @PostMapping("/upload")
 	   public ResponseEntity<?> upload(@RequestParam MultipartFile multipartFile)throws IOException {
 		  BufferedImage bi = ImageIO.read(multipartFile.getInputStream());
@@ -128,6 +136,8 @@ public class PublicidadController {
 	        
 	        return new ResponseEntity(new Mensaje("imagen subida"), HttpStatus.OK);		
 	  }
+	  
+	  @PreAuthorize("hasRole('ADMIN')")
 	  @DeleteMapping("/delete/{id}")
 	  public ResponseEntity<?> delete(@PathVariable("id") long idpublicidad)throws IOException {
 		  if(!publicidadServiceImpl.exists(idpublicidad))

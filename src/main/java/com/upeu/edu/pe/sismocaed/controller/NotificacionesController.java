@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,12 +35,14 @@ public class NotificacionesController {
 		return notificacionesService.findById(idnotificacion);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/savenoti")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Notificaciones create(@RequestBody Notificaciones notificaciones) {
 		return notificacionesService.save(notificaciones);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/editnoti/{idnotificacion}")
 	public Notificaciones update(@RequestBody Notificaciones notificaciones, @PathVariable Long idnotificacion){
 		Notificaciones editar_notificaciones = notificacionesService.findById(idnotificacion);
@@ -52,6 +55,7 @@ public class NotificacionesController {
 	    return notificacionesService.save(editar_notificaciones);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/deletenoti/{idnotificacion}")
 	public void delete(@PathVariable Long idnotificacion) {
 		notificacionesService.delete(idnotificacion);

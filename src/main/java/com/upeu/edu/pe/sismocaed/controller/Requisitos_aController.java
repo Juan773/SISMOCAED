@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,12 +41,14 @@ public class Requisitos_aController {
 		return requisitos_aService.findById(idrequisitos_a);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/savereque_a")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Requisitos_a create(@RequestBody Requisitos_a requisitos_a) {
 		return requisitos_aService.save(requisitos_a);
 	}
-		
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/editreque_a/{idrequisitos_a}")
 	public Requisitos_a update(@RequestBody Requisitos_a requisitos_a, @PathVariable Long idrequisitos_a) {
 		Requisitos_a editar_requisitos_a = requisitos_aService.findById(idrequisitos_a);
@@ -57,6 +60,7 @@ public class Requisitos_aController {
 		return requisitos_aService.save(editar_requisitos_a);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/deletereq_a/{idrequisitos_a}")
     public void delete(@PathVariable Long idrequisitos_a) {
     	requisitos_aService.delete(idrequisitos_a);

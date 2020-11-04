@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,12 +36,14 @@ public class E_ProfesionalController {
 		return e_profesionalService.findById(ide_profesional);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/savee_p")
 	@ResponseStatus(HttpStatus.CREATED)
 	public E_Profesional create(@RequestBody E_Profesional e_profesional) {
 		return e_profesionalService.save(e_profesional);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/edite_profesional/{ide_profesional}")
 	public E_Profesional update(@RequestBody E_Profesional e_profesional, @PathVariable Long ide_profesional) {
 		E_Profesional editar_profesional = e_profesionalService.findById(ide_profesional);
@@ -53,6 +56,7 @@ public class E_ProfesionalController {
 		return e_profesionalService.save(e_profesional);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/deletee_p/{ide_profesional}")
 	public void delete(@PathVariable Long ide_profesional){
 		e_profesionalService.delete(ide_profesional);

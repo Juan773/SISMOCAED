@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,12 +31,16 @@ public class Informe_maController {
 		return Informe_maService.findById(idinforme_ma);
 		
 	}
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/informe_ma")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Informe_ma create (@RequestBody Informe_ma informe_ma) {
 		return Informe_maService.save(informe_ma);
 		
 	}
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/editar/{idinforme_ma}")
 	public Informe_ma update(@RequestBody Informe_ma informe_ma, @PathVariable Long idinforme_ma) {
 		Informe_ma editar_informe_ma = Informe_maService.findById(idinforme_ma);
@@ -46,6 +51,8 @@ public class Informe_maController {
 		return Informe_maService.save(editar_informe_ma);
 		
 	}
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("eliminarinforme_ma/{idinforme_ma}")
 	public void delete(@PathVariable Long idinforme_ma) {
 		Informe_maService.delete(idinforme_ma);

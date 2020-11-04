@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +29,8 @@ public class Doc_aprobadoController {
     public Doc_aprobado read (@PathVariable Long iddoc_aprobado) {
   	  return doc_aprobadoService.findById(iddoc_aprobado);
     }
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/doc_aprobado")
     @ResponseStatus(HttpStatus.CREATED)
     public Doc_aprobado create (@RequestBody Doc_aprobado doc_aprobado) {
@@ -38,6 +41,8 @@ public class Doc_aprobadoController {
      * @param iddoc_aprobado
      * @return
      */
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar/{iddoc_aprobado}")
     public Doc_aprobado update(@RequestBody Doc_aprobado doc_aprobado, @PathVariable Long iddoc_aprobado) {
     	Doc_aprobado editar_doc_aprobado = doc_aprobadoService.findById(iddoc_aprobado);
@@ -56,6 +61,8 @@ public class Doc_aprobadoController {
   	  return doc_aprobadoService.save(editar_doc_aprobado);
   	  
     }
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("eliminardoc_aprobado/{iddoc_aprobado}")
     public void delete(@PathVariable Long iddoc_aprobado) {
     	doc_aprobadoService.delete(iddoc_aprobado);

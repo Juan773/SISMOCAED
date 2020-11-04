@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,12 +31,16 @@ public class Formulario_maController {
 		return formulario_maService.findById(idformulario_ma);
 		
 	}
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/formulario_ma")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Formulario_ma create (@RequestBody Formulario_ma formulario_ma) {
 		return formulario_maService.save(formulario_ma);
 		
 	}
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/editar/{idformulario_ma}")
 	public Formulario_ma update(@RequestBody Formulario_ma formulario_ma, @PathVariable Long idformulario_ma) {
 		Formulario_ma editar_formulario_ma = formulario_maService.findById(idformulario_ma);
@@ -50,6 +55,8 @@ public class Formulario_maController {
 		return formulario_maService.save(editar_formulario_ma);
 		
 	}
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("eliminarformulario_ma/{idformulario_ma}")
 	public void delete(@PathVariable Long idformulario_ma) {
 		formulario_maService.delete(idformulario_ma);

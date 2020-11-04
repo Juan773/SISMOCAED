@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,11 +28,15 @@ public class PersonaController {
       public Persona read (@PathVariable Long idpersona) {
     	  return personaService.findById(idpersona);
       }
+      
+      @PreAuthorize("hasRole('ADMIN')")
       @PostMapping("/persona")
       @ResponseStatus(HttpStatus.CREATED)
       public Persona create (@RequestBody Persona persona) {
     	  return personaService.save(persona);
       }
+      
+      @PreAuthorize("hasRole('ADMIN')")
       @PutMapping("/editar/{idpersona}")
       public Persona update(@RequestBody Persona persona, @PathVariable Long idpersona) {
     	  Persona editar_persona = personaService.findById(idpersona);
@@ -47,6 +52,8 @@ public class PersonaController {
     	  return personaService.save(editar_persona);
     	  
       }
+      
+      @PreAuthorize("hasRole('ADMIN')")
       @DeleteMapping("eliminarpersona/{idpersona}")
       public void delete(@PathVariable Long idpersona) {
     	  personaService.delete(idpersona);

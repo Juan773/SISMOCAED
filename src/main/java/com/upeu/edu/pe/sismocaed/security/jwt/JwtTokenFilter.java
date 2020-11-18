@@ -45,7 +45,7 @@ public class JwtTokenFilter extends OncePerRequestFilter{
 			// TODO: handle exception
 			logger.error("fail en el metodo doFilter");
 		}
-		filterChain.doFilter(req, res);
+		filterChain.doFilter(req, res); //filtramos el token
 	}
 
 	private String getToken(HttpServletRequest request) {

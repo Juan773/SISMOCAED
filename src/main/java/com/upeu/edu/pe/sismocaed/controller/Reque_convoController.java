@@ -35,13 +35,13 @@ public class Reque_convoController {
     	 return reque_convoService.findById(idreque_convo);
      }
      
-     @PreAuthorize("hasRole('ADMIN')")
+
      @PostMapping("/savereq_conv")
      public Reque_convo create(@RequestBody Reque_convo reque_convo) {
     	 return reque_convoService.save(reque_convo);
      }
      
-     @PreAuthorize("hasRole('ADMIN')")
+ 
      @PutMapping("/editreq_convo/{idreque_convo}")
      public Reque_convo update(@RequestBody Reque_convo reque_convo, @PathVariable Long idreque_convo) {
     	 Reque_convo editar_reque_conv = reque_convoService.findById(idreque_convo);
@@ -54,7 +54,7 @@ public class Reque_convoController {
      }
      
      
-     @PreAuthorize("hasRole('ADMIN')")
+
      @DeleteMapping("/deletereque_conv/{idreque_convo}")
      public void delete(@PathVariable Long idreque_convo) {
     	 reque_convoService.delete(idreque_convo);

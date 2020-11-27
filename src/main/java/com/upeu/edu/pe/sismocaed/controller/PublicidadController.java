@@ -77,7 +77,7 @@ public class PublicidadController {
 		
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+	
 	@PostMapping("/publicidad/publicidad")
 	@ResponseStatus(HttpStatus.CREATED)
 	@RequestMapping(method = RequestMethod.POST)
@@ -88,7 +88,7 @@ public class PublicidadController {
 
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PutMapping("/editar/{idpublicidad}")
 	public Publicidad update(@RequestBody Publicidad publicidad, @PathVariable Long idpublicidad) {
 		Publicidad editar_publicidad = publicidadServiceImpl.findById(idpublicidad);
@@ -101,7 +101,7 @@ public class PublicidadController {
 
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@DeleteMapping("eliminar/{id}")
 	public void delete(@PathVariable Long idpublicidad) {
 		publicidadServiceImpl.delete(idpublicidad);
@@ -115,7 +115,7 @@ public class PublicidadController {
 		 
 	 }
 	 
-	  @PreAuthorize("hasRole('ADMIN')")	
+	
 	  @PostMapping("/upload")
 	   public ResponseEntity<?> upload(@RequestParam MultipartFile multipartFile)throws IOException {
 		  BufferedImage bi = ImageIO.read(multipartFile.getInputStream());

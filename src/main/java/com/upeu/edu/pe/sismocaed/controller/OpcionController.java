@@ -33,7 +33,7 @@ public class OpcionController {
 		
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PostMapping("/opcion")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Opcion create (@RequestBody Opcion opcion) {
@@ -41,7 +41,7 @@ public class OpcionController {
 		
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PutMapping("/editar/{idopcion}")
 	public Opcion update(@RequestBody Opcion opcion, @PathVariable Long idopcion) {
 		Opcion editar_opcion = opcionService.findById(idopcion);
@@ -57,7 +57,7 @@ public class OpcionController {
 		
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@DeleteMapping("eliminaropcion/{idopcion}")
 	public void delete(@PathVariable Long idopcion) {
 		opcionService.delete(idopcion);

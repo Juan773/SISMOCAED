@@ -35,14 +35,14 @@ public class NotificacionesController {
 		return notificacionesService.findById(idnotificacion);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PostMapping("/savenoti")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Notificaciones create(@RequestBody Notificaciones notificaciones) {
 		return notificacionesService.save(notificaciones);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PutMapping("/editnoti/{idnotificacion}")
 	public Notificaciones update(@RequestBody Notificaciones notificaciones, @PathVariable Long idnotificacion){
 		Notificaciones editar_notificaciones = notificacionesService.findById(idnotificacion);
@@ -55,7 +55,7 @@ public class NotificacionesController {
 	    return notificacionesService.save(editar_notificaciones);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@DeleteMapping("/deletenoti/{idnotificacion}")
 	public void delete(@PathVariable Long idnotificacion) {
 		notificacionesService.delete(idnotificacion);

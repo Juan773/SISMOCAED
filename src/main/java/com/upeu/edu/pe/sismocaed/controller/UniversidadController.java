@@ -38,14 +38,14 @@ public class UniversidadController {
     	return universidadService.findById(iduniversidad);
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+
     @PostMapping("/saveuni")
     @ResponseStatus(HttpStatus.CREATED)
     public Universidad create(@RequestBody Universidad universidad) {
     	return universidadService.save(universidad);
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+
     @PutMapping("/edituni/{iduniversidad}")
     public Universidad update(@RequestBody Universidad universidad, @PathVariable Long iduniversidad) {
         Universidad editar_universidad = universidadService.findById(iduniversidad);
@@ -58,7 +58,7 @@ public class UniversidadController {
         return universidadService.save(editar_universidad);
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+
     @DeleteMapping("/deleteuni/{iduniversidad}")
     public void delete(@PathVariable Long iduniversidad) {
     	universidadService.delete(iduniversidad);

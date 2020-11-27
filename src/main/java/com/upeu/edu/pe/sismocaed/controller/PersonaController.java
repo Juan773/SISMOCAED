@@ -29,14 +29,14 @@ public class PersonaController {
     	  return personaService.findById(idpersona);
       }
       
-      @PreAuthorize("hasRole('ADMIN')")
+
       @PostMapping("/persona")
       @ResponseStatus(HttpStatus.CREATED)
       public Persona create (@RequestBody Persona persona) {
     	  return personaService.save(persona);
       }
       
-      @PreAuthorize("hasRole('ADMIN')")
+
       @PutMapping("/editar/{idpersona}")
       public Persona update(@RequestBody Persona persona, @PathVariable Long idpersona) {
     	  Persona editar_persona = personaService.findById(idpersona);
@@ -53,7 +53,7 @@ public class PersonaController {
     	  
       }
       
-      @PreAuthorize("hasRole('ADMIN')")
+
       @DeleteMapping("eliminarpersona/{idpersona}")
       public void delete(@PathVariable Long idpersona) {
     	  personaService.delete(idpersona);

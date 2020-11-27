@@ -15,7 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.upeu.edu.pe.sismocaed.security.entity.Usuario;
+//import com.upeu.edu.pe.sismocaed.security.entity.Usuario;
 
 @Entity
 @Table(name="opcion")
@@ -37,7 +37,7 @@ public class Opcion implements Serializable{
       @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   	@JoinTable(name="op_usu", joinColumns= @JoinColumn(name="idusuario"),
   	inverseJoinColumns=@JoinColumn(name="idopcion"))
-      private List<Usuario> usuario;
+      //private List<Usuario> usuario;
       
    
 
@@ -105,13 +105,13 @@ public class Opcion implements Serializable{
 		this.estado = estado;
 	}
 
-	public List<Usuario> getUsuario() {
+	/*public List<Usuario> getUsuario() {
 		return usuario;
 	}
 
 	public void setUsuario(List<Usuario> usuario) {
 		this.usuario = usuario;
-	}
+	}*/
 
 	public Opcion() {
 		super();

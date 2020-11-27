@@ -35,14 +35,14 @@ public class PostulanteController {
 		return postulanteService.findById(idpostulante);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PostMapping("/savepost")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Postulante create(@RequestBody Postulante postulante) {
 		return postulanteService.save(postulante);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PutMapping("/editpost/{idpostulante}")
 	public Postulante update(@RequestBody Postulante postulante, @PathVariable Long idpostulante) {
 	   Postulante editar_postulante = postulanteService.findById(idpostulante);
@@ -56,7 +56,7 @@ public class PostulanteController {
 	   return postulanteService.save(editar_postulante);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@DeleteMapping("/deletespost/{idpostulante}")
 	public void delete(@PathVariable Long idpostulante) {
 		postulanteService.delete(idpostulante);

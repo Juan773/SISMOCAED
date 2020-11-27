@@ -35,14 +35,14 @@ public class Detallles_pController {
 		return detalles_pService.findById(iddetalle_p);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PostMapping("/savedetalles_p")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Detalles_p create(@RequestBody Detalles_p detalles_p) {
 		return detalles_pService.save(detalles_p);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PutMapping("/editdetalles_p")
 	public Detalles_p update(@RequestBody Detalles_p detalles_p, @PathVariable Long iddetalle_p) {
 		Detalles_p editar_detalles_p = detalles_pService.findById(iddetalle_p);
@@ -54,7 +54,7 @@ public class Detallles_pController {
 		return detalles_pService.save(editar_detalles_p);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@DeleteMapping("/deletedeta_p")
 	public void delete(@PathVariable Long iddetalle_p) {
 		detalles_pService.delete(iddetalle_p);

@@ -53,7 +53,7 @@ public class Detalle_convoControlle {
 		return detalle_convoService.findById(iddetalle_convo);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PostMapping("/savedeta_conv")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Detalle_convo create(@RequestBody Detalle_convo detalle_convo){
@@ -61,7 +61,7 @@ public class Detalle_convoControlle {
 	}
 	
 
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PutMapping("/editdeta_conv/{iddetalle_convo}")
 	public Detalle_convo update(@RequestBody Detalle_convo detalle_convo, @PathVariable Long iddetalle_convo) {
 		Detalle_convo editar_convo = detalle_convoService.findById(iddetalle_convo);
@@ -78,13 +78,13 @@ public class Detalle_convoControlle {
 	}
 	
 
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@DeleteMapping("/deletedeta_conv/{iddetalle_convo}")
 	public void delete(@PathVariable Long iddetalle_convo) {
 		detalle_convoService.delete(iddetalle_convo);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PutMapping("/upload")
 	 public ResponseEntity<ResponseMessage> uploadFile(@RequestBody Detalle_convo detalle_convo)
 			  {

@@ -32,7 +32,7 @@ public class Doc_aprobadoController {
   	  return doc_aprobadoService.findById(iddoc_aprobado);
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+
     @PostMapping("/doc_aprobado")
     @ResponseStatus(HttpStatus.CREATED)
     public Doc_aprobado create (@RequestBody Doc_aprobado doc_aprobado) {
@@ -44,7 +44,7 @@ public class Doc_aprobadoController {
      * @return
      */
     
-    @PreAuthorize("hasRole('ADMIN')")
+
     @PutMapping("/editar/{iddoc_aprobado}")
     public Doc_aprobado update(@RequestBody Doc_aprobado doc_aprobado, @PathVariable Long iddoc_aprobado) {
     	Doc_aprobado editar_doc_aprobado = doc_aprobadoService.findById(iddoc_aprobado);
@@ -64,7 +64,7 @@ public class Doc_aprobadoController {
   	  
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+
     @DeleteMapping("eliminardoc_aprobado/{iddoc_aprobado}")
     public void delete(@PathVariable Long iddoc_aprobado) {
     	doc_aprobadoService.delete(iddoc_aprobado);

@@ -31,7 +31,7 @@ public class TrabajadorController {
 		
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PostMapping("/trabajador")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Trabajador create (@RequestBody Trabajador trabajador) {
@@ -39,7 +39,7 @@ public class TrabajadorController {
 		
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PutMapping("/editar/{idtrabajador}")
 	public Trabajador update(@RequestBody Trabajador trabajador, @PathVariable Long idtrabajador) {
 		Trabajador editar_trabajador = trabajadorService.findById(idtrabajador);
@@ -52,7 +52,7 @@ public class TrabajadorController {
 		
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@DeleteMapping("eliminartrabajador/{idtrabajador}")
 	public void delete(@PathVariable Long idtrabajador) {
 	trabajadorService.delete(idtrabajador);

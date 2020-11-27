@@ -35,14 +35,14 @@ public class Apro_postController {
 		return apro_postService.findById(idapro_post);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PostMapping("/saveapro_post")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Apro_post create(@RequestBody Apro_post apro_post) {
 		return apro_postService.save(apro_post);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PutMapping("/editapro_post/{idapro_post}")
 	public Apro_post update(@RequestBody Apro_post apro_post, @PathVariable Long idapro_post) {
 	    Apro_post editar_apro_post = apro_postService.findById(idapro_post);
@@ -54,7 +54,7 @@ public class Apro_postController {
         return apro_postService.save(editar_apro_post);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@DeleteMapping("/deleteapro_post/{idapro_post}")
 	public void delete(@PathVariable Long idapro_post) {
 		apro_postService.delete(idapro_post);

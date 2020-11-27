@@ -1,16 +1,14 @@
-package com.upeu.edu.pe.sismocaed.security.entity;
+package com.upeu.edu.pe.sismocaed.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.upeu.edu.pe.sismocaed.security.enums.RolNombre;
 
 @Entity
 @Table(name = "rol")
@@ -21,28 +19,36 @@ public class Rol implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idrol;
-	@Enumerated(EnumType.STRING)
-	private RolNombre rolNombre;
+	@Column(length = 45)
+	private String nombre;
 	
-	public Rol() {
+    public Rol() {
 		super();
 	}
-	public Rol(RolNombre rolNombre) {
+
+	public Rol(int idrol, String nombre) {
 		super();
-		this.rolNombre = rolNombre;
+		this.idrol = idrol;
+		this.nombre = nombre;
 	}
+
 	public int getIdrol() {
 		return idrol;
 	}
+
 	public void setIdrol(int idrol) {
 		this.idrol = idrol;
 	}
-	public RolNombre getRolNombre() {
-		return rolNombre;
+
+	public String getNombre() {
+		return nombre;
 	}
-	public void setRolNombre(RolNombre rolNombre) {
-		this.rolNombre = rolNombre;
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
+	
+	
 	
 	
 }

@@ -37,14 +37,14 @@ public class ConvocatoriaController {
 		return convocatoriaService.findById(idconvocatoria);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PostMapping("/saveconvo")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Convocatoria create(@RequestBody Convocatoria convocatoria) {
 		return convocatoriaService.save(convocatoria);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PutMapping("/editconvo/{idconvocatoria}")
 	public Convocatoria update(@RequestBody Convocatoria convocatoria, @PathVariable Long idconvocatoria) {
 		Convocatoria editar_convocatoria = convocatoriaService.findById(idconvocatoria);
@@ -58,7 +58,7 @@ public class ConvocatoriaController {
 		return convocatoriaService.save(editar_convocatoria);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@DeleteMapping("/deleteconvo/{idconvocatoria}")	
 	public void delete(@PathVariable Long idconvocatoria) {
 		convocatoriaService.delete(idconvocatoria);

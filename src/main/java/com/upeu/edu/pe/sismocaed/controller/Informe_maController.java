@@ -32,7 +32,7 @@ public class Informe_maController {
 		
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PostMapping("/informe_ma")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Informe_ma create (@RequestBody Informe_ma informe_ma) {
@@ -40,7 +40,7 @@ public class Informe_maController {
 		
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PutMapping("/editar/{idinforme_ma}")
 	public Informe_ma update(@RequestBody Informe_ma informe_ma, @PathVariable Long idinforme_ma) {
 		Informe_ma editar_informe_ma = Informe_maService.findById(idinforme_ma);
@@ -52,7 +52,7 @@ public class Informe_maController {
 		
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@DeleteMapping("eliminarinforme_ma/{idinforme_ma}")
 	public void delete(@PathVariable Long idinforme_ma) {
 		Informe_maService.delete(idinforme_ma);

@@ -32,7 +32,7 @@ public class Formulario_maController {
 		
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PostMapping("/formulario_ma")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Formulario_ma create (@RequestBody Formulario_ma formulario_ma) {
@@ -40,7 +40,7 @@ public class Formulario_maController {
 		
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@PutMapping("/editar/{idformulario_ma}")
 	public Formulario_ma update(@RequestBody Formulario_ma formulario_ma, @PathVariable Long idformulario_ma) {
 		Formulario_ma editar_formulario_ma = formulario_maService.findById(idformulario_ma);
@@ -56,7 +56,7 @@ public class Formulario_maController {
 		
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
+
 	@DeleteMapping("eliminarformulario_ma/{idformulario_ma}")
 	public void delete(@PathVariable Long idformulario_ma) {
 		formulario_maService.delete(idformulario_ma);

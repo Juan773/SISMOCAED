@@ -1,4 +1,4 @@
-package com.upeu.edu.pe.sismocaed.security.entity;
+package com.upeu.edu.pe.sismocaed.entity;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -25,7 +25,6 @@ public class Usuario implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idusuario;
-    private String nombre;
     @Column(unique = true)
     private String nombreUsuario;
     private String password;
@@ -36,9 +35,8 @@ public class Usuario implements Serializable{
 	public Usuario() {
 		super();
 	}
-	public Usuario(String nombre, String nombreUsuario, String password) {
+	public Usuario(String nombreUsuario, String password) {
 		super();
-		this.nombre = nombre;
 		this.nombreUsuario = nombreUsuario;
 		this.password = password;
 	}
@@ -48,12 +46,7 @@ public class Usuario implements Serializable{
 	public void setIdusuario(int idusuario) {
 		this.idusuario = idusuario;
 	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+
 	public String getNombreUsuario() {
 		return nombreUsuario;
 	}

@@ -67,7 +67,13 @@ public class Usuario implements Serializable{
 	}
 	
 	
+	public void validarUsuario(String nomuser) {
+		
+	}
 	
+	public void findAll(String name) {
+		
+	}
     
     
 }

@@ -26,32 +26,25 @@ public class Usuario implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idusuario;
     @Column(unique = true)
-    private String nombreUsuario;
+    private String username;
+    @Column(length = 90)
     private String password;
+    private Boolean enabled;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"),
     inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
-	public Usuario() {
-		super();
-	}
-	public Usuario(String nombreUsuario, String password) {
-		super();
-		this.nombreUsuario = nombreUsuario;
-		this.password = password;
-	}
 	public int getIdusuario() {
 		return idusuario;
 	}
 	public void setIdusuario(int idusuario) {
 		this.idusuario = idusuario;
 	}
-
-	public String getNombreUsuario() {
-		return nombreUsuario;
+	public String getUsername() {
+		return username;
 	}
-	public void setNombreUsuario(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getPassword() {
 		return password;
@@ -59,21 +52,18 @@ public class Usuario implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public Boolean getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
 	public Set<Rol> getRoles() {
 		return roles;
 	}
 	public void setRoles(Set<Rol> roles) {
 		this.roles = roles;
 	}
+
 	
-	
-	public void validarUsuario(String nomuser) {
-		
-	}
-	
-	public void findAll(String name) {
-		
-	}
-    
-    
 }

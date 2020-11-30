@@ -8,9 +8,9 @@ import com.upeu.edu.pe.sismocaed.entity.Usuario;
 @Repository
 public interface UsuarioDao extends CrudRepository<Usuario, Long>{
 
-	Usuario findAll(String name);
+	//Usuario findAll(String name);
 
-	Usuario validarUsuario(String nombreUsuario);
+	Usuario findByUsername(String username);
 
 	
 }

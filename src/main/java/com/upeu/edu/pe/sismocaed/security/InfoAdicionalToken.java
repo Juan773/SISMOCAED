@@ -22,10 +22,10 @@ public class InfoAdicionalToken implements TokenEnhancer{
 	
 	@Override
 	public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
-		Usuario user = usuarioDao.findAll(authentication.getName());
+		Usuario user = usuarioDao.findByUsername(authentication.getName());
 		Map<String, Object> datos = new HashMap<>();
 		datos.put("idusuario", user.getIdusuario());
-		datos.put("usuario", user.getNombreUsuario());
+		datos.put("usuario", user.getUsername());
 		
 		return accessToken;
 	}

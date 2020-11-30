@@ -12,7 +12,7 @@ import com.upeu.edu.pe.sismocaed.entity.Rol;
 @Repository
 public interface RolDao extends CrudRepository<Rol, Long>{
 
-	Collection<? extends GrantedAuthority> buscarRolUser(int idusuario);
+	//List<GrantedAuthority> buscarRolUser(String nombreUsuario);
 	
 	
 

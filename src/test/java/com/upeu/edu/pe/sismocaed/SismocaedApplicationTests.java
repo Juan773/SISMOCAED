@@ -15,8 +15,8 @@ class SismocaedApplicationTests {
 	@Test
 	void contextLoads() {
 		/*Usuario usuario = new Usuario();
-		usuario.setUsername("alejo");
-		usuario.setPassword("$2a$10$HIZd6BYCIizUFyyoAu.abO62gpCNwc4fb1suz8.7IPGjMnhBVMMqe");
+		usuario.setUsername("sandy");
+		usuario.setPassword("sandy123");
 		usuario.setEnabled(true);
 		System.out.println(usuarioDao.save(usuario));*/
 	}

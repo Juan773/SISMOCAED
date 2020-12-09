@@ -48,6 +48,12 @@ public class VacantesServiceImp implements VacantesService{
 		return null;
 	}
 
+	@Override
+	public Vacantes save(Vacantes vacantes) {
+		// TODO Auto-generated method stub
+		return vacantesDao.save(vacantes);
+	}
+
 
 	
 

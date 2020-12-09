@@ -1,22 +1,38 @@
 package com.upeu.edu.pe.sismocaed.controller;
 
+import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.upeu.edu.pe.sismocaed.entity.Vacantes;
 import com.upeu.edu.pe.sismocaed.service.VacantesService;
+import com.upeu.edu.pe.sismocaed.serviceImpl.VacanteService;
 
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/apisis")
+@RequestMapping("/apisis/cloud")
 @RestController
 public class VacantesController {
+	@Autowired
+	VacanteService vacanteService;
+	
 	@Autowired
 	private VacantesService vacantesService;
 	
@@ -34,5 +50,40 @@ public class VacantesController {
 	public void delete(@PathVariable Long idvacante) {
 		vacantesService.delete(idvacante);
 	}
-
+	
+	@PostMapping("/vacupload")
+	public ResponseEntity<Map> upload(@RequestParam MultipartFile imagen, Vacantes vacantes) throws IOException{
+		Map result = vacanteService.upload(imagen, vacantes);
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+	
+	/*@DeleteMapping("/vacdelete/{id}")
+	public ResponseEntity<Map> deletvac(@PathVariable("id") String id) throws IOException{
+		Map result = vacanteService.delete(id);
+		return new ResponseEntity<>(result, HttpStatus.OK); 
+	}*/
+	
+	
+	@PostMapping("/upload")
+	public String guardar(@RequestParam(name = "imagen", required = false) MultipartFile foto, Vacantes vacantes,
+			RedirectAttributes flash) {
+		
+		if(!foto.isEmpty()) {
+			String ruta = "D://uploads";
+			
+			try {
+				byte[] bytes= foto.getBytes();
+				Path rutaabsoluta = Paths.get(ruta + "//" + foto.getOriginalFilename());
+				Files.write(rutaabsoluta, bytes);
+				vacantes.setImagen(foto.getOriginalFilename());
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+			vacantesService.save(vacantes);
+			flash.addFlashAttribute("success", "Foto Subida !");
+		}
+		
+		return "redirect:/";
+	}
 }

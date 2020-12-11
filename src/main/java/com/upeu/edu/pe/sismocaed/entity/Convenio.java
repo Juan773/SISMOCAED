@@ -29,6 +29,8 @@ public class Convenio implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "iduniversidad")
 	Universidad iduniversidad;
+	@Column(length=45)
+	public String imagen;
 	
 	public Convenio() {
 		super();
@@ -82,6 +84,14 @@ public class Convenio implements Serializable{
 
 	public void setIduniversidad(Universidad iduniversidad) {
 		this.iduniversidad = iduniversidad;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 	
 }

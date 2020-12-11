@@ -38,68 +38,89 @@ public class Convocatoria implements Serializable{
 	@Column(length=45)
 	public String nombre_con;
 	@Column(length=45)
-	public Date fecha_ini;
+	public String fecha_ini;
 	@Column(length=45)
-	public Date fecha_fin;
+	public String fecha_fin;
 	@Column(length=45)
 	public String descripcion;
+	@Column(length=45)
+	public String imagen;
 
 	@ManyToOne
 	@JoinColumn(name="idpublicidad")
 	Publicidad idpublicidad;
-	
-	//@OneToMany(mappedBy = "convocatoria")
-   // private Detalle_convo detalle_convo;
-	
-	public Convocatoria() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Convocatoria(Long idconvocatoria, String nombre_con, Date fecha_ini, Date fecha_fin, String descripcion,
-	 Publicidad idpublicidad) {
+
+	public Convocatoria(Long idconvocatoria, String nombre_con, String fecha_ini, String fecha_fin, String descripcion,
+			String imagen, Publicidad idpublicidad) {
 		super();
 		this.idconvocatoria = idconvocatoria;
 		this.nombre_con = nombre_con;
 		this.fecha_ini = fecha_ini;
 		this.fecha_fin = fecha_fin;
 		this.descripcion = descripcion;
+		this.imagen = imagen;
 		this.idpublicidad = idpublicidad;
 	}
+
 	public Long getIdconvocatoria() {
 		return idconvocatoria;
 	}
+
 	public void setIdconvocatoria(Long idconvocatoria) {
 		this.idconvocatoria = idconvocatoria;
 	}
+
 	public String getNombre_con() {
 		return nombre_con;
 	}
+
 	public void setNombre_con(String nombre_con) {
 		this.nombre_con = nombre_con;
 	}
-	public Date getFecha_ini() {
+
+	public String getFecha_ini() {
 		return fecha_ini;
 	}
-	public void setFecha_ini(Date fecha_ini) {
+
+	public void setFecha_ini(String fecha_ini) {
 		this.fecha_ini = fecha_ini;
 	}
-	public Date getFecha_fin() {
+
+	public String getFecha_fin() {
 		return fecha_fin;
 	}
-	public void setFecha_fin(Date fecha_fin) {
+
+	public void setFecha_fin(String fecha_fin) {
 		this.fecha_fin = fecha_fin;
 	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 	public Publicidad getIdpublicidad() {
 		return idpublicidad;
 	}
+
 	public void setIdpublicidad(Publicidad idpublicidad) {
 		this.idpublicidad = idpublicidad;
-	}	
+	}
+	
+	//@OneToMany(mappedBy = "convocatoria")
+   // private Detalle_convo detalle_convo;
+	
+	
+	
 }

@@ -71,7 +71,7 @@ public class Requisitos_aController {
     	return requisitos_aService.getReq_aProcedure();
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+    
     @PostMapping("/upload/file")
     public Requisitos_a uploadFile(@RequestParam("archivos") MultipartFile file, Requisitos_a requisitos_a) throws IOException {
     	 Requisitos_a fileName = requisitos_aService.storeFile(file,requisitos_a);

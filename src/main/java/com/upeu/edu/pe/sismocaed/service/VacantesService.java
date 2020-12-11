@@ -18,6 +18,5 @@ public interface VacantesService {
 	public void delete(Long idvacante);
 	String guardar(@Valid Vacantes vacantes, BindingResult result, Model model, MultipartFile imagen,
 			RedirectAttributes attribute);
-	
 	public Vacantes save(Vacantes vacantes);
 }

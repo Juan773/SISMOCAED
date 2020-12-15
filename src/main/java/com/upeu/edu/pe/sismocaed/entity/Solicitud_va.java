@@ -30,18 +30,21 @@ public class Solicitud_va implements Serializable{
     public String carta_m;
     @Column(length=45)
     public String cv;
-    @Column(length=45)
-    public String tipo;
+	public String imagen;
+	public String nombre;
+	
+  
     
     
-    
-	public Solicitud_va(Long idsolicitud, String solicitud_mad, String carta_m, String cv, String tipo) {
+	public Solicitud_va(Long idsolicitud, String solicitud_mad, String carta_m, String cv,String imagen,String nombre) {
 		super();
 		this.idsolicitud = idsolicitud;
 		this.solicitud_mad = solicitud_mad;
 		this.carta_m = carta_m;
 		this.cv = cv;
-		this.tipo = tipo;
+		this.imagen = imagen;
+		this.nombre = nombre;
+	
 	}
 
 	public Solicitud_va() {
@@ -81,12 +84,22 @@ public class Solicitud_va implements Serializable{
 		this.cv = cv;
 	}
 
-	public String getTipo() {
-		return tipo;
+
+
+	public String getImagen() {
+		return imagen;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public static long getSerialversionuid() {

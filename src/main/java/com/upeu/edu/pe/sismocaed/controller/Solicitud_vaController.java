@@ -46,7 +46,7 @@ public class Solicitud_vaController {
 	   editar_solicitud_va.setSolicitud_mad(solicitud.getSolicitud_mad());
 	   editar_solicitud_va.setCarta_m(solicitud.getCarta_m());
 	   editar_solicitud_va.setCv(solicitud.getCv());
-	   editar_solicitud_va.setTipo(solicitud.getTipo());
+
 	   
 	   return solicitudService.save(editar_solicitud_va);
 	}

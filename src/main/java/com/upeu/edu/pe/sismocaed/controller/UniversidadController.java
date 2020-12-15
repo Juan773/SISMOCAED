@@ -54,6 +54,7 @@ public class UniversidadController {
         editar_universidad.setDireccion(universidad.getDireccion());
         editar_universidad.setPais(universidad.getPais());
         editar_universidad.setTotalvacantes(universidad.getTotalvacantes());
+        editar_universidad.setImagen(universidad.getImagen());
         
         return universidadService.save(editar_universidad);
     }

@@ -26,7 +26,7 @@ public class Vacantes implements Serializable{
 	public String fecha_fin;
 	@Column(length = 45)
 	public String contacto;
-	@Column(length = 45)
+
 	public String imagen;
 	
 	public Vacantes() {

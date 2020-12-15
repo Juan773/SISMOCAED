@@ -36,18 +36,20 @@ public class Universidad implements Serializable{
 	public String pais;
 	@Column(length=45)
 	public String totalvacantes;
+	public String imagen;
 	
 	
 	public Universidad() {
 	}
 	
-	public Universidad(Long iduniversidad, String nombre, String direccion, String pais, String totalvacantes) {
+	public Universidad(Long iduniversidad, String nombre, String direccion, String pais, String totalvacantes,String imagen) {
 		super();
 		this.iduniversidad = iduniversidad;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.pais = pais;
 		this.totalvacantes = totalvacantes;
+		this.imagen = imagen;
 	}
 
 	public Long getIduniversidad() {
@@ -79,6 +81,14 @@ public class Universidad implements Serializable{
 	}
 	public void setTotalvacantes(String totalvacantes) {
 		this.totalvacantes = totalvacantes;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 	
 	

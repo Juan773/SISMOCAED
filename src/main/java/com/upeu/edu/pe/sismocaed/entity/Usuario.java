@@ -30,6 +30,8 @@ public class Usuario implements Serializable{
     @Column(length = 90)
     private String password;
     private Boolean enabled;
+    @Column(length = 100)
+    private String imagen;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"),
     inverseJoinColumns = @JoinColumn(name = "rol_id"))
@@ -63,6 +65,12 @@ public class Usuario implements Serializable{
 	}
 	public void setRoles(Set<Rol> roles) {
 		this.roles = roles;
+	}
+	public String getImagen() {
+		return imagen;
+	}
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 	
